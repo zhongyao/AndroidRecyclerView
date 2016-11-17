@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--支持使用innerRadius与thickness属性指定圆环形状的内径和厚度；
+    也可以使用innerRediusRatio及thicknessRatio（4表示圆直径的1/4）-->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadiusRatio="4"
+    android:shape="ring"
+    android:thicknessRatio="8"
+    android:useLevel="false">
+
+    <gradient
+        android:centerColor="@color/green"
+        android:endColor="@color/blue"
+        android:startColor="@color/red"
+        android:type="sweep" />
+
+</shape>

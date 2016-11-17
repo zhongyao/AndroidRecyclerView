@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--使用xml文件的形式定义一个BitmapDrawable-->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/icon_landscape_image1"
+    android:antialias="true"
+    android:dither="true"
+    android:filter="true"
+    android:gravity="right|bottom"
+    android:mipMap="true"
+    android:tileMode="repeat">
+
+</bitmap>

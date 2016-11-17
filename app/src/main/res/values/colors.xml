@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="rv_item_line">#FFeeee</color>
+    <color name="color_31c27c">#FF31c27c</color>
+    <color name="gray">#FF696969</color>
+    <color name="SwipeRefrshRingColor1">#FFEE3E22</color>
+    <color name="SwipeRefrshRingColor2">#FF00A7E1</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFCC0000</color>
+    <color name="yellow">#FFFFCC00</color>
+    <color name="green">#FF00cc00</color>
+    <color name="black">#000000</color>
+    <color name="blue">#3366cc</color>
+    <color name="transparent">#00000000</color>
+</resources>

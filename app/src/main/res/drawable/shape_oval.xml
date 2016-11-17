@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="false">
+    <!--背景色-->
+    <solid android:color="@color/yellow" />
+    <!--轮廓线-->
+    <stroke
+        android:width="2dp"
+        android:color="@color/gray" />
+    <!--线性渐变的圆-->
+    <gradient
+        android:startColor="@color/red"
+        android:centerColor="@color/green"
+        android:endColor="@color/blue"
+        android:type="linear"
+        android:angle="45"/>
+    <!--辐射渐变的圆-->
+    <!--gradient
+        android:centerColor="@color/green"
+        android:endColor="@color/blue"
+        android:startColor="@color/red"
+        android:type="radial"
+        android:useLevel="false"
+        android:gradientRadius="100"/>-->
+    <!--扫描渐变的圆-->
+    <!--<gradient
+        android:startColor="@color/red"
+        android:centerColor="@color/green"
+        android:endColor="@color/blue"
+        android:type="sweep"
+        android:useLevel="false"/>-->
+</shape>
