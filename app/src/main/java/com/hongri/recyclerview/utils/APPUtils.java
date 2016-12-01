@@ -133,6 +133,12 @@ public class APPUtils {
         int dp2px = (int) (px2dpX * scale + 0.5f);
         Logger.d("手机屏幕的width的px:"+dp2px);
 
+        int px2dpY = (int) (height/scale + 0.5f);
+        Logger.d("手机屏幕的height的dp:"+px2dpY);
+
+        int dp2pxH = (int) (px2dpY*scale + 0.5f);
+        Logger.d("手机屏幕的height的px:"+dp2pxH);
+
         double x = Math.pow(dm.widthPixels / dm.xdpi, 2);
         double y = Math.pow(dm.heightPixels / dm.ydpi, 2);
 

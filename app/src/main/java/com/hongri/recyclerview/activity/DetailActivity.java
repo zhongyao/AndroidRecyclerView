@@ -15,6 +15,7 @@ import com.hongri.recyclerview.fragment.DetailLoadPicsTestFragment;
 import com.hongri.recyclerview.fragment.DetailMutipleFragment;
 import com.hongri.recyclerview.fragment.DetailNormalFragment;
 import com.hongri.recyclerview.fragment.DetailPullToRefreshFragment;
+import com.hongri.recyclerview.fragment.DetailViewFragment;
 import com.hongri.recyclerview.fragment.DetailVolleyTestFragment;
 import com.hongri.recyclerview.utils.Logger;
 
@@ -61,6 +62,8 @@ public class DetailActivity extends BaseActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, DetailCallbackTestFragment.newInstance(position, title)).commit();
         }else if(position == 12){
             getSupportFragmentManager().beginTransaction().replace(R.id.container, DetailAndroidArtFragment.newInstance(position,title)).commit();
+        }else if (position == 13){
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, DetailViewFragment.newInstance(position,title)).commit();
         }
     }
 }

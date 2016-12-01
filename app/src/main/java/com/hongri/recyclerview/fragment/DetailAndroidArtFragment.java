@@ -44,6 +44,7 @@ import com.hongri.recyclerview.utils.Logger;
 import com.hongri.recyclerview.utils.ToastUtil;
 import com.hongri.recyclerview.widget.CustomScrollView;
 import com.hongri.recyclerview.widget.CustomView;
+import com.hongri.recyclerview.widget.ViewPrinciple;
 
 
 /**
@@ -328,14 +329,16 @@ public class DetailAndroidArtFragment extends Fragment implements DetailAndroidA
 
         }else if (position == 3) {
             View v = LayoutInflater.from(mActivity).inflate(R.layout.android_art_view,null,false);
-            RelativeLayout ll = (RelativeLayout) v.findViewById(R.id.ll);
-            CustomView customView = (CustomView) v.findViewById(R.id.customView);
-            Button btn = (Button) v.findViewById(R.id.btn);
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) btn.getLayoutParams();
-            params.width +=500;
-            params.leftMargin +=300;
-            btn.requestLayout();
-            btn.setLayoutParams(params);
+//            RelativeLayout ll = (RelativeLayout) v.findViewById(R.id.ll);
+//            CustomView customView = (CustomView) v.findViewById(R.id.customView);
+//            Button btn = (Button) v.findViewById(R.id.btn);
+//
+//
+//            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) btn.getLayoutParams();
+//            params.width +=500;
+//            params.leftMargin +=300;
+//            btn.requestLayout();
+//            btn.setLayoutParams(params);
             rv.setVisibility(View.GONE);
             scrollView.setVisibility(View.VISIBLE);
             secondPage.addView(v);

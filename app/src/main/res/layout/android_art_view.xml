@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
@@ -11,14 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="@string/view" />
+        android:text="@string/view"
+        android:visibility="gone"/>
 
     <com.hongri.recyclerview.widget.CustomView
         android:id="@+id/customView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_below="@id/view"
-        android:background="@color/blue"></com.hongri.recyclerview.widget.CustomView>
+        android:background="@color/blue"
+        android:visibility="gone"></com.hongri.recyclerview.widget.CustomView>
 
     <com.hongri.recyclerview.widget.ScrollerLayout
         android:id="@+id/scrollerLayout"
@@ -26,7 +27,8 @@
         android:layout_height="100dp"
         android:layout_below="@id/customView"
         android:layout_marginTop="@dimen/margin_10dp"
-        android:background="@color/green">
+        android:background="@color/green"
+        android:visibility="gone">
 
         <Button
             android:layout_width="match_parent"
@@ -67,5 +69,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
-        android:text="改变布局参数实现View的滑动"/>
+        android:text="改变布局参数实现View的滑动"
+        android:visibility="gone"/>
+
+    <com.hongri.recyclerview.widget.CustomViewGroup
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#FFFFFF"
+        android:id="@+id/customViewGroup"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/red"
+            android:text="子View"
+            android:textColor="@color/blue"/>
+    </com.hongri.recyclerview.widget.CustomViewGroup>
 </RelativeLayout>

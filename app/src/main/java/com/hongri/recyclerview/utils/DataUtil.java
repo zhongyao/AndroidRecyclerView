@@ -16,7 +16,7 @@ public class DataUtil {
     private static ArrayList<String> mAndroidArtData = new ArrayList<>();
     private static ArrayList<String> mImageUrls = new ArrayList<>();
     private static ArrayList<String> mImageThumbUrls = new ArrayList<>();
-    private static String[] strHome = {"ListView", "GridView", "StaggeredGrid", "MultipleList", "MultipleComplicatedList", "ExpendedList", "GridImageVolleyTest","GridImageLoadPicsTest","GridImageDiskCacheTest","GridImageLoaderTest","PullToRefreshListView","CallBackTest","The Art of Android"};
+    private static String[] strHome = {"ListView", "GridView", "StaggeredGrid", "MultipleList", "MultipleComplicatedList", "ExpendedList", "GridImageVolleyTest","GridImageLoadPicsTest","GridImageDiskCacheTest","GridImageLoaderTest","PullToRefreshListView","CallBackTest","The Art of Android","ViewFragment"};
     private static String[] str = {"Android", "IOS", "C", "Linux", "Ruby", "Javascript", "HTML", "Java", "C#", "Python", "PHP", "C++", ".net"};
     public static int[] images = {R.drawable.icon_landscape_image1, R.drawable.icon_landscape_image2,
             R.drawable.icon_landscape_image3, R.drawable.icon_landscape_image4,

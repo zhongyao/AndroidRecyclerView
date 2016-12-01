@@ -16,4 +16,7 @@
     <string name="inputEditText">输入框</string>
     <string name="view">View事件</string>
     <string name="android_art">O(∩_∩)O哈哈~欢迎来到AndroidArt世界</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
