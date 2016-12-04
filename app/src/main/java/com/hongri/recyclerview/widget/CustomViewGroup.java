@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 /**
  * Created by zhongyao on 16/11/30.
+ *
+ * onLayout方法是ViewGroup中子View的布局方法，用于放置子View的位置。
+ * 放置子View很简单，只需在重写onLayout方法，然后获取子View的实例，调用子View的layout方法实现布局。
  */
 
 public class CustomViewGroup extends ViewGroup {
