@@ -16,7 +16,7 @@ public class DataUtil {
     private static ArrayList<String> mAndroidArtData = new ArrayList<>();
     private static ArrayList<String> mImageUrls = new ArrayList<>();
     private static ArrayList<String> mImageThumbUrls = new ArrayList<>();
-    private static String[] strHome = {"ListView", "GridView", "StaggeredGrid", "MultipleList", "MultipleComplicatedList", "ExpendedList", "GridImageVolleyTest","GridImageLoadPicsTest","GridImageDiskCacheTest","GridImageLoaderTest","PullToRefreshListView","CallBackTest","The Art of Android","ViewFragment"};
+    private static String[] strHome = {"ListView", "GridView", "StaggeredGrid", "MultipleList", "MultipleComplicatedList", "ExpendedList", "GridImageVolleyTest","GridImageLoadPicsTest","GridImageDiskCacheTest","GridImageLoaderTest","PullToRefreshListView","CallBackTest","The Art of Android","ViewFragment","ReboundFragment"};
     private static String[] str = {"Android", "IOS", "C", "Linux", "Ruby", "Javascript", "HTML", "Java", "C#", "Python", "PHP", "C++", ".net"};
     public static int[] images = {R.drawable.icon_landscape_image1, R.drawable.icon_landscape_image2,
             R.drawable.icon_landscape_image3, R.drawable.icon_landscape_image4,
@@ -25,7 +25,7 @@ public class DataUtil {
             R.drawable.icon_landscape_image9, R.drawable.icon_landscape_image10,
             R.drawable.icon_landscape_image11, R.drawable.icon_landscape_image12};
 
-    public static String[] strAndroidArt = {"Animation","Drawable","GridView","View","CustomeScrollView","LocalBroadcastManager"};
+    public static String[] strAndroidArt = {"Animation","Drawable","GridView","View","CustomeScrollView","LocalBroadcastManager","rebound"};
 //    public static int[] points = {-100,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000};
     public static int[] points = {400,500,600,700,800};
     /**

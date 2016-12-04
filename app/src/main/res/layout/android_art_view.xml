@@ -77,10 +77,17 @@
         android:layout_height="100dp"
         android:background="#FFFFFF"
         android:id="@+id/customViewGroup"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/red"
+            android:text="子View"
+            android:textColor="@color/blue"/>
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/red"

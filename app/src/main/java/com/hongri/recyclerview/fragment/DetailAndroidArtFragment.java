@@ -6,6 +6,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,6 +16,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ScaleDrawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,21 +32,30 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.facebook.rebound.SimpleSpringListener;
+import com.facebook.rebound.Spring;
+import com.facebook.rebound.SpringChain;
+import com.facebook.rebound.SpringConfig;
+import com.facebook.rebound.SpringSystem;
 import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.adapter.DetailAndroidArtAdapter;
 import com.hongri.recyclerview.adapter.DetailAndroidArtGridAdapter;
+import com.hongri.recyclerview.adapter.DetailReboundAdapter;
 import com.hongri.recyclerview.utils.DataUtil;
 import com.hongri.recyclerview.utils.Logger;
 import com.hongri.recyclerview.utils.ToastUtil;
 import com.hongri.recyclerview.widget.CustomScrollView;
 import com.hongri.recyclerview.widget.CustomView;
 import com.hongri.recyclerview.widget.ViewPrinciple;
+
+import java.util.List;
 
 
 /**
@@ -63,6 +74,7 @@ public class DetailAndroidArtFragment extends Fragment implements DetailAndroidA
     private LinearLayout secondPage;
     private DetailAndroidArtAdapter mAdapter;
     private MyLocalReceiver receiver;
+    private LinearLayout layout;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -161,8 +173,9 @@ public class DetailAndroidArtFragment extends Fragment implements DetailAndroidA
         rv.setAdapter(mAdapter);
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
-    public void itemOnClick(View view, int position) {
+    public void itemOnClick(View view, final int position) {
         ToastUtil.ShowBottomShort(mActivity,DataUtil.getAndroidArtData().get(position));
         if (position == 0){
             //Animation
@@ -351,6 +364,140 @@ public class DetailAndroidArtFragment extends Fragment implements DetailAndroidA
             scrollView.setVisibility(View.VISIBLE);
             secondPage.addView(v);
             customScrollView.invalidate();
+        }else if (position == 6){
+            View v = LayoutInflater.from(mActivity).inflate(R.layout.android_art_rebound,null,false);
+            final ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+            layout = (LinearLayout) v.findViewById(R.id.layout);
+            final HorizontalScrollView scrollView = (HorizontalScrollView) v.findViewById(R.id.scrollView);
+            final RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SpringSystem springSystem = SpringSystem.create();
+                    Spring spring = springSystem.createSpring();
+                    spring.setSpringConfig(SpringConfig.fromOrigamiTensionAndFriction(100,1));
+                    spring.addListener(new SimpleSpringListener(){
+                        @Override
+                        public void onSpringUpdate(Spring spring) {
+//                          super.onSpringUpdate(spring);
+                            float value = (float) spring.getCurrentValue();
+                            float scale = 1f - (value * 0.5f);
+                            imageView.setScaleX(scale);
+                            imageView.setScaleY(scale);
+                        }
+                    });
+                    spring.setEndValue(1);
+                }
+            });
+
+//            scrollView.setOnScrollChangeListener();
+
+//            scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//                @Override
+//                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//                    Logger.d("scrollView---onScrollchange");
+//
+//                    SpringChain springChain = SpringChain.create(40,6,50,7);
+//                    int viewCount = layout.getChildCount();
+//                    for (int i = 0; i < viewCount; i++) {
+//                        final View viewChild = layout.getChildAt(i);
+//                        springChain.addSpring(new SimpleSpringListener(){
+//                            @Override
+//                            public void onSpringUpdate(Spring spring) {
+////                              super.onSpringUpdate(spring);
+//                                viewChild.setTranslationX((float) spring.getCurrentValue());
+//
+//                            }
+//                        });
+//                    }
+//
+//                    List<Spring> springs = springChain.getAllSprings();
+//                    for (int i = 0; i < springs.size(); i++) {
+//                        springs.get(i).setCurrentValue(400);
+//                    }
+//                    springChain.setControlSpringIndex(2).getControlSpring().setEndValue(0);
+//
+//                }
+//            });
+
+            springAnim();
+
+            layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    springAnim();
+                }
+            });
+//            layout.setOnScrollChangeListener(new ViewG);
+//            recyclerView.onScrollL
+
+//            layout.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//                @Override
+//                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//
+//                    Logger.d("onScrollChange");
+//                    springAnim();
+//                }
+//            });
+
+            recyclerView.setLayoutManager(new LinearLayoutManager(mActivity,LinearLayoutManager.HORIZONTAL,false));
+            DetailReboundAdapter reboundAdapter = new DetailReboundAdapter(mActivity);
+            recyclerView.setAdapter(reboundAdapter);
+
+            recyclerView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SpringChain springChain = SpringChain.create(40,6,50,7);
+                    int viewCount = recyclerView.getChildCount();
+                    for (int i = 0; i < viewCount; i++) {
+                        final View viewChild = recyclerView.getChildAt(i);
+                        springChain.addSpring(new SimpleSpringListener(){
+                            @Override
+                            public void onSpringUpdate(Spring spring) {
+                                super.onSpringUpdate(spring);
+                                viewChild.setTranslationX((float) spring.getCurrentValue());
+                            }
+                        });
+                    }
+
+                    List<Spring> springs = springChain.getAllSprings();
+
+                    for (int i = 0; i < springs.size(); i++) {
+                        springs.get(i).setCurrentValue(400);
+                    }
+
+                    springChain.setControlSpringIndex(2).getControlSpring().setEndValue(0);
+                }
+            });
+
+            rv.setVisibility(View.GONE);
+            scrollView.setVisibility(View.VISIBLE);
+            secondPage.addView(v);
         }
+
+    }
+
+    private void springAnim() {
+        SpringChain springChain = SpringChain.create(40,6,50,7);
+        int viewCount = layout.getChildCount();
+        for (int i = 0; i < viewCount; i++) {
+            final View viewChild = layout.getChildAt(i);
+            springChain.addSpring(new SimpleSpringListener(){
+                @Override
+                public void onSpringUpdate(Spring spring) {
+//                              super.onSpringUpdate(spring);
+                    viewChild.setTranslationX((float) spring.getCurrentValue());
+
+                }
+            });
+        }
+
+        List<Spring> springs = springChain.getAllSprings();
+        for (int i = 0; i < springs.size(); i++) {
+            springs.get(i).setCurrentValue(400);
+        }
+        springChain.setControlSpringIndex(2).getControlSpring().setEndValue(0);
+
     }
 }

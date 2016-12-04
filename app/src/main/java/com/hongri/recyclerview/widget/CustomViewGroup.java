@@ -10,6 +10,8 @@ import android.view.ViewGroup;
  */
 
 public class CustomViewGroup extends ViewGroup {
+    // 子View的水平间隔
+    private int ChildPadding = 20;
 
     public CustomViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -17,7 +19,13 @@ public class CustomViewGroup extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
+        // 动态获取子View实例
+        for (int i = 0; i < getChildCount(); i++) {
+            View view = getChildAt(i);
+            // 放置子View，宽高都是100
+            view.layout(l+10,t+10,l+300,b+300);
+            l+=300+ ChildPadding;
+        }
     }
 
     @Override
