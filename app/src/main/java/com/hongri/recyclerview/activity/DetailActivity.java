@@ -45,7 +45,7 @@ public class DetailActivity extends BaseActivity {
     private void switchFragment(int position, String title) {
         if (position <= 2) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, DetailNormalFragment.newInstance(position, title)).commit();
-        } else if (position >= 3 && position <= 4) {
+        } else if (position <= 4) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, DetailMutipleFragment.newInstance(position, title)).commit();
         } else if (position == 5) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, DetailExpendedFragment.newInstance(position, title)).commit();
