@@ -19,10 +19,12 @@ public class SettingActivity extends BaseActivity {
         setContentView(R.layout.activity_setting);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(R.string.settings);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.settings);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, SettingFragement.getInstacne()).commit();
         }
 

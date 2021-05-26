@@ -12,6 +12,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.fragment.SettingFragement;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.Logger;
+import com.hongri.recyclerview.utils.SchemeUtil;
 import com.hongri.recyclerview.utils.ToastUtil;
 
 
@@ -31,6 +33,7 @@ import com.hongri.recyclerview.utils.ToastUtil;
  * @description:所有Activity父类
  */
 public class BaseActivity extends AppCompatActivity {
+    private static final String TAG = BaseActivity.class.getSimpleName();
     private Context context;
     private LinearLayout rootLayout;
 
@@ -138,12 +141,28 @@ public class BaseActivity extends AppCompatActivity {
                 intent.setAction("com.hongri.recyclerview.activity.SettingActivity");
                 startActivity(intent);*/
 
-                //通过匹配action,data 来隐式启动该Activity
+                //通过匹配action,data 来隐式启动该Activity【方法1】
                 Intent intent = new Intent();
-                intent.setAction("com.hongri.recyclerview.activity.SettingActivity");
-                //Uri的格式:scheme://host:port/path or pathPrefix or pathPattern
-                intent.setData(Uri.parse("hongri://recyclerview/setting"));
-                startActivity(intent);
+                String uriString = "hongri://recyclerview:6666/setting";
+//                intent.setAction("com.hongri.recyclerview.activity.SettingActivity");
+//                //Uri的格式:scheme://host:port/path or pathPrefix or pathPattern
+//                intent.setData(Uri.parse("hongri://recyclerview:6666/setting"));
+//                startActivity(intent);
+
+                //或者【方法2】
+//                intent.setAction("android.intent.action.VIEW");
+//                intent.setData(Uri.parse(uriString));
+//                startActivity(intent);
+
+                //或者【方法3】其实与【方法2】一样
+                boolean isValid = SchemeUtil.isSchemeValid(this, uriString);
+                Log.d(TAG, "scheme is valid:" + isValid);
+                if (isValid) {
+                    //跳转之前需要判断此scheme是否有效，有效时才进行跳转；否则会引起crash。
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(uriString));
+                    startActivity(intent);
+                }
 
                 ToastUtil.ShowBottomShort(BaseActivity.this, R.string.action_settings);
                 break;

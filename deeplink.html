@@ -1,0 +1,48 @@
+
+<!doctype html>
+<html dir="ltr" lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <title>新标签页</title>
+    <style>
+      body {
+        background: #FFFFFF;
+        margin: 0;
+      }
+
+      #oneGoogleBar {
+        height: 56px;
+      }
+
+      #backgroundImage {
+        border: none;
+        height: 100%;
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        visibility: hidden;
+        width: 100%;
+      }
+
+      [show-background-image] #backgroundImage {
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+  	deep link
+    <br></br>
+    <a href="zone://open" style="font-size:30px;">open Place</a>
+    <br></br>
+
+    <a href="hongri://recyclerview:8888/welcome?id=100&name=yao" style="font-size:30px;">open  recyclerview welcome</a>
+    <br></br>
+
+    <a href="hongri://recyclerview:6666/setting?id=99&name=jack" style="font-size:30px;">open  recyclerview setting</a>
+    <br></br>
+
+    <a href="http://www.baidu.com" style="font-size:30px;">open android baidu</a>
+    <br></br>
+
+  </body>
+</html>
