@@ -12,3 +12,8 @@
 #### <1>通过shouldOverrideUrlLoading重定向：
 #### <2>通过scheme跳转【intent-filter】即类似上面的--浏览器唤端
 #### <3>JS与Android交互跳转 addJavascriptInterface 等
+
+
+## 4、EditText剪切 复制 粘贴事件捕获：
+#### override EditText的onTextContextMenuItem方法。
+
