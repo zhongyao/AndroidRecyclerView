@@ -2,6 +2,7 @@
     <string name="app_name">AndroidRecyclerView</string>
     <string name="rv_item_text">itemText</string>
     <string name="action_favorite">favorite</string>
+    <string name="exec_app">关闭（启用）其他应用</string>
     <string name="action_settings">setting</string>
     <string name="settings">设置</string>
     <string name="action_search">Search</string>
@@ -12,6 +13,7 @@
     <string name="tv_convert">设备信息打印log</string>
     <string name="vibrator">vibrator</string>
     <string name="speechRecognizer">SpeechRecognizer</string>
+    <string name="edit_text_string">EditText 复制 剪切 粘贴事件</string>
     <string name="ObjectAnimator">ObjectAnimator</string>
     <string name="inputEditText">输入框</string>
     <string name="view">View事件</string>

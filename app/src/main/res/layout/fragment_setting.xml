@@ -11,8 +11,8 @@
         android:background="@drawable/ll_selector"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/margin_10dp"
-        android:paddingTop="@dimen/margin_10dp">
+        android:paddingTop="@dimen/margin_10dp"
+        android:paddingBottom="@dimen/margin_10dp">
 
         <TextView
             android:id="@+id/tv"
@@ -34,8 +34,8 @@
         android:background="@drawable/ll_selector"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/margin_10dp"
-        android:paddingTop="@dimen/margin_10dp">
+        android:paddingTop="@dimen/margin_10dp"
+        android:paddingBottom="@dimen/margin_10dp">
 
         <TextView
             android:id="@+id/tv_convert"
@@ -67,4 +67,20 @@
         android:layout_margin="2dp"
         android:background="@drawable/ll_selector"
         android:text="@string/speechRecognizer" />
+    <!--EditText 复制 剪切 粘贴-->
+    <com.hongri.recyclerview.widget.MyEditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@drawable/ll_selector"
+        android:hint="@string/edit_text_string" />
+
+    <Button
+        android:id="@+id/btn_exec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ll_selector"
+        android:layout_margin="2dp"
+        android:text="@string/exec_app"/>
 </LinearLayout>

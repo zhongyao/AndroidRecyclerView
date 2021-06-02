@@ -11,10 +11,12 @@ import android.os.Vibrator;
 import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.hongri.recyclerview.R;
@@ -23,7 +25,9 @@ import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.DisplayUtil;
 import com.hongri.recyclerview.utils.ToastUtil;
+import com.hongri.recyclerview.widget.MyEditText;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -33,13 +37,15 @@ import java.util.Locale;
  * @description:
  */
 public class SettingFragement extends Fragment implements View.OnClickListener {
+    private static final String TAG = SettingFragement.class.getSimpleName();
     private static SettingFragement settingFragement;
     private static boolean hasClicked = false;
     private Activity mActivity;
     private Vibrator vibrator;
     private Button speechRecognizer;
+    private MyEditText editText;
     private LinearLayout ll_clearCache, ll_convert;
-    private Button vibrate;
+    private Button vibrate, execApp;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -116,11 +122,16 @@ public class SettingFragement extends Fragment implements View.OnClickListener {
         ll_convert = (LinearLayout) view.findViewById(R.id.ll_convert);
         vibrate = (Button) view.findViewById(R.id.vibrate);
         speechRecognizer = (Button) view.findViewById(R.id.speechRecognizer);
+        editText = view.findViewById(R.id.editText);
+        execApp = view.findViewById(R.id.btn_exec);
+
 
         ll_clearCache.setOnClickListener(this);
         ll_convert.setOnClickListener(this);
         vibrate.setOnClickListener(this);
         speechRecognizer.setOnClickListener(this);
+        editText.setOnClickListener(this);
+        execApp.setOnClickListener(this);
 
         return view;
     }
@@ -161,10 +172,56 @@ public class SettingFragement extends Fragment implements View.OnClickListener {
                 //开始识别
                 startRecognizerActivity();
                 break;
+            case R.id.editText:
+                editTextTest();
+                break;
+            case R.id.btn_exec:
+                execTest();
+                break;
             default:
-
                 break;
         }
+    }
+
+    /**
+     * Runtime.getRuntime().exec()方法
+     */
+    private void execTest() {
+        try {
+            //关闭其他应用
+            Process exec = Runtime.getRuntime().exec("am force-stop com.tencent.mm");
+
+            //打开其他应用
+//            Process exec = Runtime.getRuntime().exec("am start -n 包名/启动类名称");
+
+            if (exec.waitFor() == 0) {
+                Log.d(TAG, "执行成功");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * EditText事件监听
+     */
+    private void editTextTest() {
+        editText.setOnPasteCallback(new MyEditText.OnPasteCallback() {
+            @Override
+            public void onCut() {
+                Log.d(TAG, "onCut");
+            }
+
+            @Override
+            public void onCopy() {
+                Log.d(TAG, "onCopy");
+            }
+
+            @Override
+            public void onPaste() {
+                Log.d(TAG, "onPaste");
+            }
+        });
     }
 
     private void startRecognizerActivity() {
