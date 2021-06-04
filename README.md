@@ -17,3 +17,6 @@
 ## 4、EditText剪切 复制 粘贴事件捕获：
 #### override EditText的onTextContextMenuItem方法。
 
+## 5、EditText及TextView对输入的文字进行过滤：
+#### this.setFilters(new InputFilter[]{new EditPatternFilter("^\\s{0,1}[0-9]{0,1}$")}); //后面是进行过滤的正则表达式
+

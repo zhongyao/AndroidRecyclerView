@@ -12,12 +12,14 @@ import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.cache.CacheClearManager;
@@ -220,6 +222,17 @@ public class SettingFragement extends Fragment implements View.OnClickListener {
             @Override
             public void onPaste() {
                 Log.d(TAG, "onPaste");
+            }
+
+            /**
+             * 键盘点击事件捕获
+             * @param v
+             * @param actionId
+             * @param event
+             */
+            @Override
+            public void onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Log.d(TAG, "onEditorAction:" + event.getAction());
             }
         });
     }
