@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景颜色 -->
+    <item android:drawable="@color/white" />
+
+    <item
+        android:width="79dp"
+        android:height="79dp"
+        android:gravity="center_horizontal"
+        android:top="150dp">
+        <!-- logo -->
+        <bitmap
+            android:mipMap="true"
+            android:src="@mipmap/ic_launcher" />
+    </item>
+
+    <item
+        android:width="141dp"
+        android:height="21dp"
+        android:gravity="center_horizontal"
+        android:top="264dp">
+        <!-- slogan -->
+        <bitmap
+            android:mipMap="true"
+            android:src="@mipmap/ic_launcher" />
+    </item>
+</layer-list>
