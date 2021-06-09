@@ -20,3 +20,6 @@
 ## 5、EditText及TextView对输入的文字进行过滤：
 #### this.setFilters(new InputFilter[]{new EditPatternFilter("^\\s{0,1}[0-9]{0,1}$")}); //后面是进行过滤的正则表达式
 
+
+## 6、DrawableUtil工具类方法createRectangleDrawable--可设置各个角的圆角效果。
+
