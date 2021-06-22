@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 
 import com.hongri.recyclerview.R;
-import com.hongri.recyclerview.fragment.SettingFragement;
+import com.hongri.recyclerview.fragment.SettingFragment;
 
 /**
  * @author：zhongyao on 2016/8/3 17:49
@@ -25,7 +25,7 @@ public class SettingActivity extends BaseActivity {
         }
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, SettingFragement.getInstacne()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, SettingFragment.getInstacne()).commit();
         }
 
     }

@@ -2,7 +2,6 @@ package com.hongri.recyclerview.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
@@ -21,7 +20,6 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.hongri.recyclerview.R;
-import com.hongri.recyclerview.fragment.SettingFragement;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.Logger;
 import com.hongri.recyclerview.utils.SchemeUtil;

@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.speech.RecognizerIntent;
@@ -17,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,11 +23,9 @@ import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.utils.APPUtils;
-import com.hongri.recyclerview.utils.DisplayUtil;
 import com.hongri.recyclerview.utils.ToastUtil;
 import com.hongri.recyclerview.widget.MyEditText;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -38,9 +34,9 @@ import java.util.Locale;
  * @author：zhongyao on 2016/8/3 17:41
  * @description:
  */
-public class SettingFragement extends Fragment implements View.OnClickListener {
-    private static final String TAG = SettingFragement.class.getSimpleName();
-    private static SettingFragement settingFragement;
+public class SettingFragment extends Fragment implements View.OnClickListener {
+    private static final String TAG = SettingFragment.class.getSimpleName();
+    private static SettingFragment settingFragment;
     private static boolean hasClicked = false;
     private Activity mActivity;
     private Vibrator vibrator;
@@ -62,19 +58,19 @@ public class SettingFragement extends Fragment implements View.OnClickListener {
         mActivity = null;
     }
 
-    public SettingFragement() {
+    public SettingFragment() {
     }
 
-    public static SettingFragement getInstacne() {
-        if (settingFragement == null) {
-            synchronized (SettingFragement.class) {
-                if (settingFragement == null) {
-                    settingFragement = new SettingFragement();
+    public static SettingFragment getInstacne() {
+        if (settingFragment == null) {
+            synchronized (SettingFragment.class) {
+                if (settingFragment == null) {
+                    settingFragment = new SettingFragment();
                 }
             }
         }
         hasClicked = false;
-        return settingFragement;
+        return settingFragment;
     }
 
     @Override
