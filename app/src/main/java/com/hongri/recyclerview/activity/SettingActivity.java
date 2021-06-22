@@ -25,7 +25,7 @@ public class SettingActivity extends BaseActivity {
         }
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, SettingFragment.getInstacne()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, SettingFragment.getInstance()).commit();
         }
 
     }

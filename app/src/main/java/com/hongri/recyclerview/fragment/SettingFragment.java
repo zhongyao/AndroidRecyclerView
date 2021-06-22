@@ -61,7 +61,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     public SettingFragment() {
     }
 
-    public static SettingFragment getInstacne() {
+    public static SettingFragment getInstance() {
         if (settingFragment == null) {
             synchronized (SettingFragment.class) {
                 if (settingFragment == null) {
