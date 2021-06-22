@@ -2,6 +2,7 @@ package com.hongri.recyclerview.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 
 //import com.crashlytics.android.Crashlytics;
 //import com.crashlytics.android.ndk.CrashlyticsNdk;
@@ -29,5 +30,17 @@ public class MainActivity extends BaseActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, HomeFragment.getInstance()).commit();
         }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Logger.d("MainActivity--onSaveInstanceState");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Logger.d("MainActivity--onRestoreInstanceState");
     }
 }

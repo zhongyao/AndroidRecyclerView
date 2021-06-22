@@ -13,7 +13,7 @@ import com.hongri.recyclerview.fragment.SettingFragment;
  * @description:
  */
 public class SettingActivity extends BaseActivity {
-    private static final String TAG = SettingActivity.class.getSimpleName();
+    private static final String TAG = "SettingFragment-Parent";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
