@@ -10,6 +10,8 @@ import android.os.Vibrator;
 import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -44,6 +46,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     private MyEditText editText;
     private LinearLayout ll_clearCache, ll_convert;
     private Button vibrate, execApp;
+    private Button btn_open_new_fragment;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -94,6 +97,12 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             speechRecognizer.setEnabled(false);
             speechRecognizer.setText("未检测到语音识别设备");
         }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        Log.d(TAG, "hidden:" + hidden);
     }
 
     @Nullable
@@ -162,6 +171,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         speechRecognizer = (Button) view.findViewById(R.id.speechRecognizer);
         editText = view.findViewById(R.id.editText);
         execApp = view.findViewById(R.id.btn_exec);
+        btn_open_new_fragment = view.findViewById(R.id.btn_open_new_fragment);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -170,6 +180,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         speechRecognizer.setOnClickListener(this);
         editText.setOnClickListener(this);
         execApp.setOnClickListener(this);
+        btn_open_new_fragment.setOnClickListener(this);
 
         return view;
     }
@@ -216,9 +227,20 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_exec:
                 execTest();
                 break;
+
+            case R.id.btn_open_new_fragment:
+                openNewFragment();
+                break;
             default:
                 break;
         }
+    }
+
+    private void openNewFragment() {
+        if (openCallback != null) {
+            openCallback.openNewFragment();
+        }
+
     }
 
     /**
@@ -318,5 +340,14 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         //使用震动方式
 //       long[] pattern = {1000,2000,4000,8000,16000};
 //       vibrator.vibrate(pattern,0);
+    }
+
+    private static OpenCallback openCallback;
+
+    public static void setOpenCallback(OpenCallback callback) {
+        openCallback = callback;
+    }
+    public interface OpenCallback {
+        void openNewFragment();
     }
 }

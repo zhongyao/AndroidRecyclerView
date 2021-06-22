@@ -2,17 +2,21 @@ package com.hongri.recyclerview.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 
 import com.hongri.recyclerview.R;
+import com.hongri.recyclerview.fragment.DetailViewFragment;
+import com.hongri.recyclerview.fragment.OpenFragment;
 import com.hongri.recyclerview.fragment.SettingFragment;
 
 /**
  * @author：zhongyao on 2016/8/3 17:49
  * @description:
  */
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends BaseActivity implements SettingFragment.OpenCallback {
     private static final String TAG = "SettingFragment-Parent";
 
     @Override
@@ -28,15 +32,21 @@ public class SettingActivity extends BaseActivity {
         }
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, SettingFragment.getInstance()).commit();
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.add(R.id.container, SettingFragment.getInstance());
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
+
+        SettingFragment.setOpenCallback(this);
 
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(TAG, "onCreate");
+        Log.d(TAG, "onRestart");
     }
 
     @Override
@@ -67,5 +77,14 @@ public class SettingActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
+    }
+
+    @Override
+    public void openNewFragment() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.container, OpenFragment.getInstance());
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

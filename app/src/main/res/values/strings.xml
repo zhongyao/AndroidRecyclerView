@@ -3,6 +3,7 @@
     <string name="rv_item_text">itemText</string>
     <string name="action_favorite">favorite</string>
     <string name="exec_app">关闭（启用）其他应用</string>
+    <string name="open_new_fragment">启用新的Fragment</string>
     <string name="action_settings">setting</string>
     <string name="settings">设置</string>
     <string name="action_search">Search</string>
