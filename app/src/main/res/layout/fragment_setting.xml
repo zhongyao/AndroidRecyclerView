@@ -92,4 +92,10 @@
         android:layout_margin="2dp"
         android:text="@string/open_new_fragment"/>
 
+    <!--使用wrap_content在不同的drawable文件夹下加载相同图片，差异会很大，故建议使用一个固定的dp值比较好-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/welcome_android"/>
+
 </LinearLayout>
