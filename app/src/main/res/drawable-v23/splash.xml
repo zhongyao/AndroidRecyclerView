@@ -11,7 +11,7 @@
         <!-- logo -->
         <bitmap
             android:mipMap="true"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_launcher" />
     </item>
 
     <item
@@ -22,6 +22,6 @@
         <!-- slogan -->
         <bitmap
             android:mipMap="true"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_launcher" />
     </item>
 </layer-list>
