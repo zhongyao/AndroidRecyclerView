@@ -23,7 +23,8 @@
 
 ## 6、DrawableUtil工具类方法createRectangleDrawable--可设置各个角的圆角效果。
 
-## 7、 文件夹名称	分辨率	dpi	density
+## 7、各图片文件夹对应分辨率及dpi
+##   文件夹名称	分辨率	dpi	density
 ##     ldpi	 	120dpi	0.75
 ##     mdpi	 	160dpi 	1
 ##     hdpi	480*800	240dpi	1.5
