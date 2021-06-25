@@ -24,23 +24,23 @@
 ## 6、DrawableUtil工具类方法createRectangleDrawable--可设置各个角的圆角效果。
 
 ## 7、各图片文件夹对应分辨率及dpi
-##   文件夹名称	分辨率	dpi	density
-##     ldpi	 	120dpi	0.75
-##     mdpi	 	160dpi 	1
-##     hdpi	480*800	240dpi	1.5
-##     xhdpi	720*1280	320dpi	2
-##     xxhdpi	1080*1920	480dpi	3
-##     xxxhdpi	1440*2560	640dpi	4
+###   文件夹名称	分辨率	dpi	density
+###     ldpi	 	120dpi	0.75
+###     mdpi	 	160dpi 	1
+###     hdpi	480*800	240dpi	1.5
+###     xhdpi	720*1280	320dpi	2
+###     xxhdpi	1080*1920	480dpi	3
+###     xxxhdpi	1440*2560	640dpi	4
 
-## 加载顺序：
-## 如果一个设备对应为xxhdpi，则加载图片的优先级依次为drawable-xxhdpi xxxhdpi xhdpi hdpi mdpi ldpi drawable
-## 即先从对应分辨率的文件夹里找，如果没有，则逐渐往高的分辨率的文件夹中找，如果均没有，则从较低的文件夹中依次查找。
+### 加载顺序：
+#### 如果一个设备对应为xxhdpi，则加载图片的优先级依次为drawable-xxhdpi xxxhdpi xhdpi hdpi mdpi ldpi drawable
+#### 即先从对应分辨率的文件夹里找，如果没有，则逐渐往高的分辨率的文件夹中找，如果均没有，则从较低的文件夹中依次查找。
 
-## 从低分辨率的文件夹中加载的图片，会变大，一张图片被放大意味着要占用更多的内存。
-## 从高分辨率的文件夹中加载的图片，会变小。
+### 从低分辨率的文件夹中加载的图片，会变大，一张图片被放大意味着要占用更多的内存。
+### 从高分辨率的文件夹中加载的图片，会变小。
 
-## 结论：图片资源应该尽量放在高密度文件夹下，这样可以节省图片的内存开支。
-## 参考：https://blog.csdn.net/guolin_blog/article/details/50727753
+### 结论：图片资源应该尽量放在高密度文件夹下，这样可以节省图片的内存开支。
+### 参考：https://blog.csdn.net/guolin_blog/article/details/50727753
 
 
 
