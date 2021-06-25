@@ -115,6 +115,8 @@ public class APPUtils {
     }
     /**
      * 获取手机屏幕的尺寸分辨率等信息
+     *
+     * 可参考：https://cloud.tencent.com/developer/article/1450335
      */
     public static void getPhoneInfo(Activity mActivity){
 
@@ -127,6 +129,8 @@ public class APPUtils {
         Logger.d("手机屏幕的height（像素）:"+height + "\n");
 
         final float scale = mActivity.getResources().getDisplayMetrics().density;
+        Logger.d("手机屏幕的密度(dpi--dots per inch):" + scale);
+
         int px2dpX = (int) (width/scale + 0.5f);
         Logger.d("手机屏幕的width的dp:"+px2dpX);
 
