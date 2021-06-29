@@ -42,8 +42,21 @@
 ### 结论：图片资源应该尽量放在高密度文件夹下，这样可以节省图片的内存开支。
 #### 参考：https://blog.csdn.net/guolin_blog/article/details/50727753
 
-
-
-
+## 8、APP进入到某个页面后，按home键，在回到APP，如果想保持原有界面，方法有：
+####（1）设置启动Activity的launchMode:singleTop ---> standard(或singleTop).并且在启动页跳转MainActivity时finish掉即可(或设置启动页android:noHistory="true"--类似于finish)。
+#### (2) 如果启动Activity的launchMode必须设置为singleTask,怎可在启动Activity的onCreate方法中加入如下代码即可： 
+#### '''
+     if (!this.isTaskRoot()) {
+                 Intent intent = getIntent();
+                 if (intent != null) {
+                     String action = intent.getAction();
+                     if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
+                         finish();
+                         return;
+                     }
+                 }
+             }
+      
+####     '''
 
 

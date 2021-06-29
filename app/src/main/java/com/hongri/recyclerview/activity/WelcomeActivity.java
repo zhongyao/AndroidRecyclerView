@@ -24,6 +24,17 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         Logger.d("WelcomeActivity--onCreate()");
 
+        if (!this.isTaskRoot()) {
+            Intent intent = getIntent();
+            if (intent != null) {
+                String action = intent.getAction();
+                if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
+                    finish();
+                    return;
+                }
+            }
+        }
+
         Uri uri = getIntent().getData();
         if (uri != null) {
             //完成的url信息
