@@ -22,7 +22,7 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logger.d("WelcomeActivity--onCreate()");
+        Logger.d("WelcomeActivity--onCreate()---> isTaskRoot:" + this.isTaskRoot());
 
         if (!this.isTaskRoot()) {
             Intent intent = getIntent();

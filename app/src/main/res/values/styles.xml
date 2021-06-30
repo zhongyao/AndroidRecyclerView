@@ -10,6 +10,10 @@
     <style name="Theme.AppStartLoad" parent="AppTheme">
         <item name="android:windowBackground">@drawable/icon_redsun2</item>
         <item name="android:windowNoTitle">true</item>
+        <!--设置导航栏透明-->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--设置状态栏为透明【会默认设置为全屏】-->
+        <item name="android:statusBarColor">@color/transparent</item>
     </style>
 
     //方法2、设置透明Theme
