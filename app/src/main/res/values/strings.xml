@@ -15,6 +15,7 @@
     <string name="vibrator">vibrator</string>
     <string name="speechRecognizer">SpeechRecognizer</string>
     <string name="edit_text_string">EditText 复制 剪切 粘贴事件</string>
+    <string name="edit_text_keyboard">EditText 软键盘相关</string>
     <string name="ObjectAnimator">ObjectAnimator</string>
     <string name="inputEditText">输入框</string>
     <string name="view">View事件</string>

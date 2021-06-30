@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -47,6 +48,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     private LinearLayout ll_clearCache, ll_convert;
     private Button vibrate, execApp;
     private Button btn_open_new_fragment;
+    private EditText editTextKeyboard;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -172,6 +174,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         editText = view.findViewById(R.id.editText);
         execApp = view.findViewById(R.id.btn_exec);
         btn_open_new_fragment = view.findViewById(R.id.btn_open_new_fragment);
+        editTextKeyboard = view.findViewById(R.id.editTextKeyboard);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -181,6 +184,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         editText.setOnClickListener(this);
         execApp.setOnClickListener(this);
         btn_open_new_fragment.setOnClickListener(this);
+        editTextKeyboard.setOnClickListener(this);
 
         return view;
     }
@@ -231,9 +235,17 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_open_new_fragment:
                 openNewFragment();
                 break;
+
+            case R.id.editTextKeyboard:
+                onEditTextClick();
+                break;
             default:
                 break;
         }
+    }
+
+    private void onEditTextClick() {
+
     }
 
     private void openNewFragment() {
