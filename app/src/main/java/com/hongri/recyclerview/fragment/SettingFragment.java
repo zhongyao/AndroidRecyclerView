@@ -37,7 +37,7 @@ import java.util.Locale;
  * @author：zhongyao on 2016/8/3 17:41
  * @description:
  */
-public class SettingFragment extends Fragment implements View.OnClickListener {
+public class SettingFragment extends Fragment implements View.OnClickListener, TextView.OnEditorActionListener {
     private static final String TAG = SettingFragment.class.getSimpleName();
     private static SettingFragment settingFragment;
     private static boolean hasClicked = false;
@@ -185,6 +185,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         execApp.setOnClickListener(this);
         btn_open_new_fragment.setOnClickListener(this);
         editTextKeyboard.setOnClickListener(this);
+        editTextKeyboard.setOnEditorActionListener(this);
 
         return view;
     }
@@ -359,6 +360,25 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     public static void setOpenCallback(OpenCallback callback) {
         openCallback = callback;
     }
+
+    /**
+     * 输入中文时点击回车键，此方法响应
+     * 输入英文时点击回车键，此方法不响应。
+     * 待调研~
+     * @param v
+     * @param actionId
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        Log.d(TAG, "onEditorAction");
+        if (event != null) {
+            Log.d(TAG, "actionId:" + actionId + " event:" + event.getAction());
+        }
+        return true;
+    }
+
     public interface OpenCallback {
         void openNewFragment();
     }

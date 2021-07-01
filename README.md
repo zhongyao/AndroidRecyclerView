@@ -63,3 +63,12 @@
 #### (1)singleInstance 的使用场景：适合需要与程序分离开的页面。如闹钟提醒，将闹铃提醒与闹铃设置分离。
 #### (2)singleTask 适合作为程序的入口点。
 #### (3)singleTop 适合接收通知启动的内容显示页面。
+
+
+## EditText属性：
+#### 默认非单行，故点击软键盘回车键，会自动换行。
+#### android:singleLine="true"(必加，下同) android:imeOptions="actionSend" -->"发送"
+#### android:imeOptions="actionSearch" -->"搜索"
+#### android:imeOptions="actionNext" -->"下一步"
+#### android:imeOptions="actionDone" -->"完成"
+#### android:imeOptions="actionGo" -->"前往/开始"
