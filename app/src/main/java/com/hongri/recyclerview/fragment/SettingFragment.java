@@ -8,10 +8,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.speech.RecognizerIntent;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -23,6 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hongri.recyclerview.R;
+import com.hongri.recyclerview.activity.MainActivity;
+import com.hongri.recyclerview.badge.BadgeClient;
 import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.utils.APPUtils;
@@ -49,6 +50,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private Button vibrate, execApp;
     private Button btn_open_new_fragment;
     private EditText editTextKeyboard;
+    private Button badgeBtn;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -175,6 +177,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         execApp = view.findViewById(R.id.btn_exec);
         btn_open_new_fragment = view.findViewById(R.id.btn_open_new_fragment);
         editTextKeyboard = view.findViewById(R.id.editTextKeyboard);
+        badgeBtn = view.findViewById(R.id.badgeBtn);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -186,6 +189,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         btn_open_new_fragment.setOnClickListener(this);
         editTextKeyboard.setOnClickListener(this);
         editTextKeyboard.setOnEditorActionListener(this);
+        badgeBtn.setOnClickListener(this);
 
         return view;
     }
@@ -240,9 +244,19 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
             case R.id.editTextKeyboard:
                 onEditTextClick();
                 break;
+            case R.id.badgeBtn:
+                badgeShow();
+                break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 角标测试
+     */
+    private void badgeShow() {
+        BadgeClient.setBadgeCount(getActivity(), MainActivity.class, 2);
     }
 
     private void onEditTextClick() {

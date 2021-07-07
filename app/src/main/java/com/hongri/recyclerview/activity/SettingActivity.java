@@ -1,14 +1,13 @@
 package com.hongri.recyclerview.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.ActionBar;
 import android.util.Log;
 
 import com.hongri.recyclerview.R;
-import com.hongri.recyclerview.fragment.DetailViewFragment;
 import com.hongri.recyclerview.fragment.OpenFragment;
 import com.hongri.recyclerview.fragment.SettingFragment;
 

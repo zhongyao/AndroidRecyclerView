@@ -1,8 +1,8 @@
 package com.hongri.recyclerview.activity;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.v7.app.ActionBar;
+
+import androidx.appcompat.app.ActionBar;
 
 import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.common.APPConstants;

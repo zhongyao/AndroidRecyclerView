@@ -1,8 +1,7 @@
 package com.hongri.recyclerview.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.util.Log;
+import androidx.appcompat.app.ActionBar;
 
 //import com.crashlytics.android.Crashlytics;
 //import com.crashlytics.android.ndk.CrashlyticsNdk;

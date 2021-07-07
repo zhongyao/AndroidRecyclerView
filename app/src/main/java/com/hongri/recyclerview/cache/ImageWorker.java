@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.v4.util.LruCache;
+import androidx.collection.LruCache;
 import android.widget.ImageView;
 
 import com.hongri.recyclerview.https.DownloadImageFromNetwork;

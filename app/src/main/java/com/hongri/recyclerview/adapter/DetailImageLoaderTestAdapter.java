@@ -2,27 +2,19 @@ package com.hongri.recyclerview.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Environment;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.hongri.recyclerview.R;
-import com.hongri.recyclerview.utils.APPUtils;
-import com.hongri.recyclerview.utils.Logger;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageSize;
-import com.nostra13.universalimageloader.core.download.ImageDownloader;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
