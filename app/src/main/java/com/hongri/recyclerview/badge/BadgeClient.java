@@ -27,7 +27,7 @@ public class BadgeClient {
             return strategy;
         }
 
-        if ("xiaomi".equalsIgnoreCase(strBrand) || "redmi".equalsIgnoreCase(strBrand)) {
+        if ("xiaomi".equalsIgnoreCase(strBrand) || "redmi".equalsIgnoreCase(strBrand) || "blackshark".equalsIgnoreCase(strBrand)) {
             strategy = new XiaoMiBadgeStrategy();
         } else if ("huawei".equalsIgnoreCase(strBrand) || "honor".equalsIgnoreCase(strBrand)) {
             strategy = new HuaweiBadgeStrategy();

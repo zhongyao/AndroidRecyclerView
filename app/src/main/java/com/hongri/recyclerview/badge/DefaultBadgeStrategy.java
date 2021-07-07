@@ -47,7 +47,6 @@ public class DefaultBadgeStrategy extends IBadgeStrategy {
         Notification notification = new NotificationCompat.Builder(context, "badge")
                 .setContentTitle("未读消息")
                 .setContentText("您有" + count + "条未读消息")
-                .setNumber(100)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setAutoCancel(true)
@@ -56,6 +55,6 @@ public class DefaultBadgeStrategy extends IBadgeStrategy {
                 .setNumber(count)
                 .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL).build();
           //暂设置不弹出，后续可根据需要调整
-//        notificationManager.notify(BADGE_TAG, notificationId++, notification);
+        notificationManager.notify(BADGE_TAG, notificationId++, notification);
     }
 }

@@ -74,7 +74,7 @@ public class XiaoMiBadgeStrategy extends IBadgeStrategy {
         // 小米
         setBadgeInternal(count, notification);
         //暂设置不弹出，后续可根据需要调整
-        //notificationManager.notify(BADGE_TAG, notificationId++, notification);
+        notificationManager.notify(BADGE_TAG, notificationId++, notification);
     }
 
     private void setBadgeInternal(int count, Notification notification) {
