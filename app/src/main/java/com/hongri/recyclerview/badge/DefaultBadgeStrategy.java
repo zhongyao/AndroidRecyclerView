@@ -19,8 +19,8 @@ import com.hongri.recyclerview.R;
  * Description:
  */
 public class DefaultBadgeStrategy extends IBadgeStrategy {
-    private static final String BADGE_TAG = "wanmei_badge";
-    private static final String BADGE_CHANNEL_ID = "wanmei_badge_id";
+    private static final String BADGE_TAG = "yao";
+    private static final String BADGE_CHANNEL_ID = "yao_id";
     private static int notificationId = 1;
 
     @Override

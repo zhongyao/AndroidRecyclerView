@@ -24,9 +24,9 @@ import java.lang.reflect.Method;
  */
 
 public class XiaoMiBadgeStrategy extends IBadgeStrategy {
-    private static final String BADGE_TAG = "wanmei_badge2";
-    private static final String BADGE_CHANNEL_ID = "wanmei_badge_id";
-    private static final String BADGE_LAST_COUNT = "badge_last_count";
+    private static final String BADGE_TAG = "yao";
+    private static final String BADGE_CHANNEL_ID = "yao_id";
+    private static final String BADGE_LAST_COUNT = "yao_count";
     private static int notificationId = 1;
 
     /**
