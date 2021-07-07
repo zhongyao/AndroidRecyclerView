@@ -7,6 +7,7 @@ import android.os.Bundle;
 /**
  * Create by zhongyao on 2021/5/27
  * Description:
+ * OPPO角标适配（需先发邮件给OPPO官网申请）：https://open.oppomobile.com/bbs/forum.php?mod=viewthread&tid=2448&extra=page%3D1&aid=11392
  */
 public class OppoBadgeStrategy extends IBadgeStrategy {
     private int mCurrentAppBadgeCount = -1;
