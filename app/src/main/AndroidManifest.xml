@@ -17,7 +17,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/Theme.AppStartLoad"
+            android:theme="@style/SplashTheme"
             android:launchMode="singleTask">
 
         </activity>
@@ -43,7 +43,7 @@
             android:launchMode="singleTask"
             android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppStartLoad">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

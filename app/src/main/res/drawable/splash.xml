@@ -5,21 +5,11 @@
 
     <item
         android:gravity="top"
-        android:top="150dp">
+        android:top="0dp">
         <!-- logo -->
         <bitmap
-            android:gravity="center_horizontal"
-            android:mipMap="true"
-            android:src="@mipmap/ic_launcher" />
-    </item>
-
-    <item
-        android:gravity="top"
-        android:top="264dp">
-        <!-- slogan -->
-        <bitmap
-            android:gravity="center_horizontal"
-            android:mipMap="true"
-            android:src="@mipmap/ic_launcher" />
+            android:gravity="center"
+            android:mipMap="false"
+            android:src="@drawable/welcome" />
     </item>
 </layer-list>

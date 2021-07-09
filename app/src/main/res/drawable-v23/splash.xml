@@ -4,24 +4,13 @@
     <item android:drawable="@color/white" />
 
     <item
-        android:width="79dp"
-        android:height="79dp"
-        android:gravity="center_horizontal"
-        android:top="150dp">
+        android:width="200dp"
+        android:height="200dp"
+        android:gravity="center"
+        android:top="0dp">
         <!-- logo -->
         <bitmap
-            android:mipMap="true"
-            android:src="@drawable/ic_launcher" />
-    </item>
-
-    <item
-        android:width="141dp"
-        android:height="21dp"
-        android:gravity="center_horizontal"
-        android:top="264dp">
-        <!-- slogan -->
-        <bitmap
-            android:mipMap="true"
-            android:src="@drawable/ic_launcher" />
+            android:mipMap="false"
+            android:src="@drawable/welcome" />
     </item>
 </layer-list>
