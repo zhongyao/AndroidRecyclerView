@@ -65,10 +65,67 @@
 #### (3)singleTop 适合接收通知启动的内容显示页面。
 
 
-## EditText属性：
+## 10、EditText属性：
 #### 默认非单行，故点击软键盘回车键，会自动换行。
 #### android:singleLine="true"(必加，下同) android:imeOptions="actionSend" -->"发送"
 #### android:imeOptions="actionSearch" -->"搜索"
 #### android:imeOptions="actionNext" -->"下一步"
 #### android:imeOptions="actionDone" -->"完成"
 #### android:imeOptions="actionGo" -->"前往/开始"
+
+
+
+### 11、状态栏/导航栏
+#### 状态栏和导航栏窗口是系统级窗口而Activity对应的时应用窗口，它们属于不同的窗口层级
+####(1)、
+#### '''
+    <style name="TestTheme" parent="android:Theme.Material.NoActionBar">
+        <!--下列两行控制使得应用窗口透明，用于展示一些差异-->
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        
+        <!--设置导航栏/状态栏窗口color为透明【app布局不会延伸到导航栏/状态栏】-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+        <!--<item name="android:navigationBarColor">@android:color/transparent</item>-->
+
+        <!--与color transparent的区别【app布局将会延伸到导航栏/状态栏】-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+#### '''
+#### 上面主题最下面两行代码相当于：
+#### '''
+        //使得布局延伸到状态栏和导航栏区域
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        
+        //透明状态栏/导航栏
+        window.setStatusBarColor(Color.TRANSPARENT);
+        window.setNavigationBarColor(Color.TRANSPARENT);
+#### '''
+#### '''
+    在布局中设置:
+    android:fitsSystemWindows="true"
+    可以使得，系统自动为视图添加一个状态栏/导航栏高度的padding
+#### '''
+####
+####
+####
+####
+####
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

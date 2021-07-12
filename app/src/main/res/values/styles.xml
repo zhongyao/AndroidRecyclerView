@@ -28,5 +28,12 @@
         <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <!--设置导航栏窗口color为透明（布局不会延伸到导航栏）:可解决具有NavigationBar的手机启动logo抖动问题
+        + 广场刷新时导航栏透明问题。与属性 windowTranslucentNavigation 的区别是，后者会使布局延伸到导航栏-->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <!--设置状态栏窗口color为透明【布局不会延伸到状态栏】与属性 windowTranslucentStatus 的区别是，
+        后者会式布局延伸到状态栏-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>
