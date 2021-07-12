@@ -75,9 +75,8 @@
 
 
 
-### 11、状态栏/导航栏
+## 11、状态栏/导航栏
 #### 状态栏和导航栏窗口是系统级窗口而Activity对应的时应用窗口，它们属于不同的窗口层级
-####(1)、
 #### '''
     <style name="TestTheme" parent="android:Theme.Material.NoActionBar">
         <!--下列两行控制使得应用窗口透明，用于展示一些差异-->
