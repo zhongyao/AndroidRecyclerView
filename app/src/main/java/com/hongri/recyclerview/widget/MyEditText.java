@@ -1,7 +1,9 @@
 package com.hongri.recyclerview.widget;
 
 import android.content.Context;
+
 import androidx.appcompat.widget.AppCompatEditText;
+
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -23,6 +25,10 @@ public class MyEditText extends AppCompatEditText {
     private static final String TAG = "MyEditText";
 
     private OnPasteCallback mOnPasteCallback;
+
+    //注意如下文本输入前后 mBeforeS 及 mBeforeString 的差异性
+    private CharSequence mBeforeS;
+    private String mBeforeString;
 
     public MyEditText(Context context) {
         super(context);
@@ -49,14 +55,43 @@ public class MyEditText extends AppCompatEditText {
         });
 
         addTextChangedListener(new TextWatcher() {
+
+            /**
+             *
+             * @param s 修改前的字符串
+             * @param start
+             * @param count
+             * @param after
+             */
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                Log.d(TAG, "afterTextChanged :" + s);
+                Log.d(TAG, "beforeTextChanged :" + s + " start:" + start + " count:" + count + " after:" + after);
+                mBeforeS = s;
+                mBeforeString = s.toString();
+                Log.d(TAG, "beforeTextChanged : mBeforeS:" + mBeforeS + " mBeforeString:" + mBeforeString);
             }
 
+            /**
+             *
+             * @param s 改变后的字符串
+             * @param start 有变动的字符串index
+             * @param before 被改变的字符串长度，如果是新增则为0
+             * @param count 添加的字符串长度，如果是删除则为0
+             */
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.d(TAG, "afterTextChanged---s:" + s + " start:" + start + " before:" + before + " count:" + count);
+                Log.d(TAG, "onTextChanged---s:" + s + " start:" + start + " before:" + before + " count:" + count);
+
+                if (count != 0) {
+                    //表示有新添加字符串
+                    Log.d(TAG, "onTextChanged---新输入的子内容：" + s.subSequence(start, start + count));
+                } else if (before != 0) {
+                    //表示有新删除字符串
+                    if (mBeforeString != null && mBeforeString.length() > 0) {
+                        Log.d(TAG, "mBeforeS:" + mBeforeS + " mBeforeString:" + mBeforeString);
+                        Log.d(TAG, "onTextChanged---新删除的子内容：" + mBeforeString.subSequence(start, start + before));
+                    }
+                }
             }
 
             @Override
@@ -68,7 +103,7 @@ public class MyEditText extends AppCompatEditText {
         /**
          * 对输入的文字进行过滤，可以自定义处理
          */
-        this.setFilters(new InputFilter[]{new EditPatternFilter("^\\s{0,1}[0-9]{0,1}$")});
+//        this.setFilters(new InputFilter[]{new EditPatternFilter("^\\s{0,1}[0-9]{0,1}$")});
     }
 
     public static class EditPatternFilter implements InputFilter {
