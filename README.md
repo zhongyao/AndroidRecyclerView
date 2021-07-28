@@ -108,8 +108,9 @@
     android:fitsSystemWindows="true"
     可以使得，系统自动为视图添加一个状态栏/导航栏高度的padding
 #### '''
-####
-####
+### 12、EditText的beforeTextChanged onTextChanged的 CharSequence s 参数赋值问题
+#### 【赋值给CharSequence 与赋值给String的区别】需注意。String 单独存在常量池中，故不变化。 
+#### 而内部CharSequence公用同一个s,故会变化。
 ####
 ####
 ####

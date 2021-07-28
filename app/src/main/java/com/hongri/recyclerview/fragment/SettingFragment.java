@@ -28,6 +28,7 @@ import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.ToastUtil;
+import com.hongri.recyclerview.widget.CharTest;
 import com.hongri.recyclerview.widget.MyEditText;
 
 import java.util.ArrayList;
@@ -78,10 +79,12 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate");
+        Log.d(TAG, "onCreae");
         initVibrate();
 
 
+        CharTest charTest = new CharTest();
+        charTest.charTest();
     }
 
     private void initRecognizer() {

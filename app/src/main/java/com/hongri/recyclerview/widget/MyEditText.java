@@ -26,7 +26,9 @@ public class MyEditText extends AppCompatEditText {
 
     private OnPasteCallback mOnPasteCallback;
 
-    //注意如下文本输入前后 mBeforeS 及 mBeforeString 的差异性
+    /**
+     * 注意如下文本输入前后 mBeforeS 及 mBeforeString 的差异性
+     */
     private CharSequence mBeforeS;
     private String mBeforeString;
 
