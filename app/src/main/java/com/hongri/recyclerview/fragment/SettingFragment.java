@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.speech.RecognizerIntent;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -16,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -27,8 +29,8 @@ import com.hongri.recyclerview.badge.BadgeClient;
 import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.utils.APPUtils;
+import com.hongri.recyclerview.utils.SoftKeyboardUtil;
 import com.hongri.recyclerview.utils.ToastUtil;
-import com.hongri.recyclerview.widget.CharTest;
 import com.hongri.recyclerview.widget.MyEditText;
 
 import java.util.ArrayList;
@@ -51,6 +53,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private Button vibrate, execApp;
     private Button btn_open_new_fragment;
     private EditText editTextKeyboard;
+    private Button testKB;
     private Button badgeBtn;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
@@ -79,12 +82,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreae");
+        Log.d(TAG, "onCreate");
         initVibrate();
-
-
-        CharTest charTest = new CharTest();
-        charTest.charTest();
     }
 
     private void initRecognizer() {
@@ -180,6 +179,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         execApp = view.findViewById(R.id.btn_exec);
         btn_open_new_fragment = view.findViewById(R.id.btn_open_new_fragment);
         editTextKeyboard = view.findViewById(R.id.editTextKeyboard);
+        testKB = view.findViewById(R.id.testKB);
+
         badgeBtn = view.findViewById(R.id.badgeBtn);
 
 
@@ -192,6 +193,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         btn_open_new_fragment.setOnClickListener(this);
         editTextKeyboard.setOnClickListener(this);
         editTextKeyboard.setOnEditorActionListener(this);
+        testKB.setOnClickListener(this);
         badgeBtn.setOnClickListener(this);
 
         return view;
@@ -247,12 +249,25 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
             case R.id.editTextKeyboard:
                 onEditTextClick();
                 break;
+            case R.id.testKB:
+                onTestKeyBoard();
+                break;
             case R.id.badgeBtn:
                 badgeShow();
                 break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 测试软件盘[显/隐]
+     */
+    private void onTestKeyBoard() {
+        //隐藏软键盘---不丢失焦点
+        List<View> listViews = new ArrayList<>();
+        listViews.add(editTextKeyboard);
+        SoftKeyboardUtil.hideSoftKeyboard(getContext(), listViews);
     }
 
     /**
@@ -382,6 +397,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
      * 输入中文时点击回车键，此方法响应
      * 输入英文时点击回车键，此方法不响应。
      * 待调研~
+     *
      * @param v
      * @param actionId
      * @param event
