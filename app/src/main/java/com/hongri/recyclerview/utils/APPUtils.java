@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Surface;
 import android.view.WindowManager;
 
@@ -119,6 +120,12 @@ public class APPUtils {
      * 可参考：https://cloud.tencent.com/developer/article/1450335
      */
     public static void getPhoneInfo(Activity mActivity){
+
+        if (DeviceUtil.isHarmonyOS()) {
+            Logger.d("手机系统: HarmonyOS");
+        } else {
+            Logger.d("手机系统: Android");
+        }
 
         DisplayMetrics dm = new DisplayMetrics();
         mActivity.getWindowManager().getDefaultDisplay().getMetrics(dm);
