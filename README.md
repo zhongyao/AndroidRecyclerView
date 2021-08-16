@@ -119,6 +119,9 @@
 #### 封装SoftKeyBoardUtil 软键盘显示/隐藏工具类。
 #### 
 
+### 14、adb 启动Activity并传参.
+#### 指令举例:adb shell am start -n com.hongri.recyclerview/com.hongri.recyclerview.activity.SettingActivity --es name zhongyao --ei age 18
+#### 在Activity中通过getIntent解析数据，具体可查看，SettingActivity.
 
 
 

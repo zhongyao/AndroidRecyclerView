@@ -1,5 +1,7 @@
 package com.hongri.recyclerview.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
@@ -16,13 +18,39 @@ import com.hongri.recyclerview.fragment.SettingFragment;
  * @description:
  */
 public class SettingActivity extends BaseActivity implements SettingFragment.OpenCallback {
-    private static final String TAG = "SettingFragment-Parent";
+    private static final String TAG = "SettingActivity";
+    /**
+     * adb指令启动Activity并传参 测试开关：
+     * adb shell am start -n com.hongri.recyclerview/com.hongri.recyclerview.activity.SettingActivity --es name zhongyao --ei age 18
+     *
+     */
+    private static boolean testForADB = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         Log.d(TAG, "onCreate");
+
+        if (testForADB) {
+            Intent intent = getIntent();
+            if (intent == null) {
+                Log.d(TAG, "intent is null");
+                return;
+            }
+            Bundle extras = intent.getExtras();
+            if (extras == null) {
+                Log.d(TAG, "extra is null");
+                return;
+            }
+            Uri uri = intent.getData();
+            String extraName = extras.getString("name");
+            int extraAge = extras.getInt("age");
+            String name = intent.getStringExtra("name");
+            int age = intent.getIntExtra("age", -1);
+
+            Log.d(TAG, "uri:" + uri + " extraName:" + extraName + " extraAge:" + extraAge + " name:" + name + " age:" + age);
+        }
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
