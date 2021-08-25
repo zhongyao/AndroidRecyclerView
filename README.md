@@ -124,7 +124,8 @@
 #### 在Activity中通过getIntent解析数据，具体可查看，SettingActivity.
 
 
-
+### Android 检测App是否调用了用户的敏感信息的方案:
+[Android审核：用户授权前获取mac地址，imei等用户敏感信息的方法](https://www.jianshu.com/p/84127032d15a)
 
 
 
