@@ -150,4 +150,11 @@
         android:background="@drawable/ll_selector"
         android:text="ThreadPoolExecutor"/>
 
+    <Button
+        android:id="@+id/regexBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ll_selector"
+        android:text="regex[正则表达式]"/>
+
 </LinearLayout>

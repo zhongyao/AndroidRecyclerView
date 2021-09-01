@@ -12,6 +12,9 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.regex.Matcher;
@@ -175,6 +178,29 @@ public class MyEditText extends AppCompatEditText {
                 }
         }
         return super.onTextContextMenuItem(id);
+    }
+
+    /**
+     * 从软键盘获取输入的方法【此方法可以判断TextWatcher监听的方法触发是1、setText触发还是键盘输入触发---键盘输入触发会调用此方法】
+     * @param outAttrs
+     * @return
+     */
+    @Override
+    public InputConnection onCreateInputConnection(EditorInfo outAttrs) {
+        Log.d(TAG,"onCreateInputConnection");
+        return super.onCreateInputConnection(outAttrs);
+    }
+
+    /**
+     * 从硬键盘获取输入的方法
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyPreIme(int keyCode, KeyEvent event) {
+        Log.d(TAG, "onKeyPreIme");
+        return super.onKeyPreIme(keyCode, event);
     }
 
     public interface OnPasteCallback {

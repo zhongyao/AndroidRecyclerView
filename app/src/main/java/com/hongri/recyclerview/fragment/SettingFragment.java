@@ -201,6 +201,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         badgeBtn.setOnClickListener(this);
         threadExecutorBtn.setOnClickListener(this);
 
+        editText.setText("00");
+
         return view;
     }
 
