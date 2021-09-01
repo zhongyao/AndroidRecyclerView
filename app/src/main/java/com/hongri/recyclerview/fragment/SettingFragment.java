@@ -12,6 +12,7 @@ import android.speech.RecognizerIntent;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.telephony.mbms.MbmsErrors;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import com.hongri.recyclerview.activity.MainActivity;
 import com.hongri.recyclerview.badge.BadgeClient;
 import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
+import com.hongri.recyclerview.threadpool.ThreadPoolTester;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.SoftKeyboardUtil;
 import com.hongri.recyclerview.utils.ToastUtil;
@@ -55,6 +57,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private EditText editTextKeyboard;
     private Button testKB;
     private Button badgeBtn;
+    private Button threadExecutorBtn;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -182,6 +185,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         testKB = view.findViewById(R.id.testKB);
 
         badgeBtn = view.findViewById(R.id.badgeBtn);
+        threadExecutorBtn = view.findViewById(R.id.threadExecutorBtn);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -195,6 +199,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         editTextKeyboard.setOnEditorActionListener(this);
         testKB.setOnClickListener(this);
         badgeBtn.setOnClickListener(this);
+        threadExecutorBtn.setOnClickListener(this);
 
         return view;
     }
@@ -254,6 +259,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                 break;
             case R.id.badgeBtn:
                 badgeShow();
+                break;
+            case R.id.threadExecutorBtn:
+                ThreadPoolTester threadPoolTester = new ThreadPoolTester();
+                threadPoolTester.testCustomerExecutorException();
                 break;
             default:
                 break;

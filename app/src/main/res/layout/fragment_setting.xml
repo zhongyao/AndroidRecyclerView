@@ -142,4 +142,12 @@
         android:textSize="18dp"
         android:text="Good" />
 
+    <!--线程池测试-->
+    <Button
+        android:id="@+id/threadExecutorBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ll_selector"
+        android:text="ThreadPoolExecutor"/>
+
 </LinearLayout>
