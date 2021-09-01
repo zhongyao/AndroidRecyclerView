@@ -150,6 +150,8 @@
         android:background="@drawable/ll_selector"
         android:text="ThreadPoolExecutor"/>
 
+    <!--正则表达式：
+     参考：https://www.liaoxuefeng.com/wiki/1016959663602400/1017639890281664 -->
     <Button
         android:id="@+id/regexBtn"
         android:layout_width="match_parent"
