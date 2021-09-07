@@ -1,5 +1,6 @@
 package com.hongri.recyclerview.fragment;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -18,6 +19,9 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,14 +54,16 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private Activity mActivity;
     private Vibrator vibrator;
     private Button speechRecognizer;
-    private MyEditText editText;
-    private LinearLayout ll_clearCache, ll_convert;
+    private MyEditText editText;    private LinearLayout ll_clearCache, ll_convert;
     private Button vibrate, execApp;
     private Button btn_open_new_fragment;
     private EditText editTextKeyboard;
     private Button testKB;
     private Button badgeBtn;
     private Button threadExecutorBtn;
+    private LinearLayout layoutAnim;
+    private Button viewAnim;
+    private AlphaAnimation animation;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -186,7 +192,15 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
 
         badgeBtn = view.findViewById(R.id.badgeBtn);
         threadExecutorBtn = view.findViewById(R.id.threadExecutorBtn);
-
+        layoutAnim = view.findViewById(R.id.layoutAnim);
+        viewAnim = view.findViewById(R.id.viewAnim);
+        animation = new AlphaAnimation(0, 1);
+        animation.setDuration(2000);
+        animation.setRepeatCount(Animation.INFINITE);
+        animation.setRepeatMode(Animation.RESTART);
+        animation.setInterpolator(new LinearInterpolator());
+        animation.start();
+        viewAnim.startAnimation(animation);
 
         ll_clearCache.setOnClickListener(this);
         ll_convert.setOnClickListener(this);
@@ -200,6 +214,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         testKB.setOnClickListener(this);
         badgeBtn.setOnClickListener(this);
         threadExecutorBtn.setOnClickListener(this);
+        layoutAnim.setOnClickListener(this);
+        viewAnim.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -265,6 +281,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
             case R.id.threadExecutorBtn:
                 ThreadPoolTester threadPoolTester = new ThreadPoolTester();
                 threadPoolTester.testCustomerExecutorException();
+                break;
+            case R.id.viewAnim:
+                viewAnim.clearAnimation();
+                layoutAnim.removeView(viewAnim);
                 break;
             default:
                 break;

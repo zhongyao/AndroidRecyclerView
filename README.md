@@ -127,6 +127,10 @@
 ##### 如：^[^\r]{0,100}$ 表示可以输入100个字符，包含回车键 
 ##### 参考：https://www.liaoxuefeng.com/wiki/1016959663602400/1017639890281664
 
+### 16、动画导致setVisibility/removeView失效问题解决方案:
+##### 在这两处操作之前 view.clearAnimation()即可
+###### 另外有一种情况setVisibility/removeView不会失效，即父布局的height是wrap_content。
+
 
 ### Android 检测App是否调用了用户的敏感信息的方案:
 [Android审核：用户授权前获取mac地址，imei等用户敏感信息的方法](https://www.jianshu.com/p/84127032d15a)

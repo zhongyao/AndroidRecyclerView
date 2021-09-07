@@ -137,10 +137,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/ll_selector"
+        android:text="Good"
         android:textFontWeight="700"
-        android:textStyle="bold"
         android:textSize="18dp"
-        android:text="Good" />
+        android:textStyle="bold" />
 
     <!--线程池测试-->
     <Button
@@ -148,7 +148,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ll_selector"
-        android:text="ThreadPoolExecutor"/>
+        android:text="ThreadPoolExecutor" />
 
     <!--正则表达式：
      参考：https://www.liaoxuefeng.com/wiki/1016959663602400/1017639890281664 -->
@@ -157,6 +157,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ll_selector"
-        android:text="regex[正则表达式]"/>
+        android:text="regex[正则表达式]" />
+
+    <!--动画导致setVisibility/removeView失效问题解决方案:
+        1、在这两处操作之前 view.clearAnimation()即可
+
+        另外有一种情况setVisibility/removeView不会失效，
+        即如下的LinearLayout(父布局)height 是wrap_content。
+        -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:background="@color/green"
+        android:id="@+id/layoutAnim">
+
+        <Button
+            android:id="@+id/viewAnim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ll_selector"
+            android:text="动画导致setVisibility/removeView失效" />
+    </LinearLayout>
 
 </LinearLayout>
