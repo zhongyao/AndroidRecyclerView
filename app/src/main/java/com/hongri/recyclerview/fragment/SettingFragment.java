@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.speech.RecognizerIntent;
@@ -25,6 +26,7 @@ import android.view.animation.LinearInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -54,7 +56,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private Activity mActivity;
     private Vibrator vibrator;
     private Button speechRecognizer;
-    private MyEditText editText;    private LinearLayout ll_clearCache, ll_convert;
+    private MyEditText editText;
+    private LinearLayout ll_clearCache, ll_convert;
     private Button vibrate, execApp;
     private Button btn_open_new_fragment;
     private EditText editTextKeyboard;
@@ -64,6 +67,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private LinearLayout layoutAnim;
     private Button viewAnim;
     private AlphaAnimation animation;
+    private LinearLayout layoutDrawable;
+    private ImageView first, second;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -202,6 +207,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         animation.start();
         viewAnim.startAnimation(animation);
 
+        layoutDrawable = view.findViewById(R.id.layoutDrawable);
+        first = view.findViewById(R.id.first);
+        second = view.findViewById(R.id.second);
+
         ll_clearCache.setOnClickListener(this);
         ll_convert.setOnClickListener(this);
         vibrate.setOnClickListener(this);
@@ -216,6 +225,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         threadExecutorBtn.setOnClickListener(this);
         layoutAnim.setOnClickListener(this);
         viewAnim.setOnClickListener(this);
+        layoutDrawable.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -285,6 +295,25 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
             case R.id.viewAnim:
                 viewAnim.clearAnimation();
                 layoutAnim.removeView(viewAnim);
+                break;
+            case R.id.layoutDrawable:
+                BitmapDrawable firstDrawable = (BitmapDrawable) getResources().getDrawable(R.drawable.welcome);
+                BitmapDrawable secondDrawable = (BitmapDrawable) getResources().getDrawable(R.drawable.welcome);
+
+                //两个Drawable采用的是同一个ConstantState 即BitmapState。
+                Log.d(TAG, "fistDrawable:" + firstDrawable.getConstantState() + " secondDrawable:" + secondDrawable.getConstantState());
+//                first.setImageDrawable(firstDrawable);
+//                second.setImageDrawable(secondDrawable);
+
+                //两个drawable均会变透明
+//                secondDrawable.setAlpha(150);
+                //只有第二个drawable会变透明
+//                secondDrawable.mutate().setAlpha(150);
+
+                //也能正常显示【虽然公用同一个ConstantState，但是Drawable.mBounds不同会进行重绘，所以也是显示正常的】
+                first.setImageDrawable(firstDrawable);
+                second.setImageDrawable(firstDrawable.getConstantState().newDrawable());
+
                 break;
             default:
                 break;

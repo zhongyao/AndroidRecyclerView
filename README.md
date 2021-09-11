@@ -135,6 +135,12 @@
 ### Android 检测App是否调用了用户的敏感信息的方案:
 [Android审核：用户授权前获取mac地址，imei等用户敏感信息的方法](https://www.jianshu.com/p/84127032d15a)
 
+### 关于Drawable的缓存机制【围绕mutate】：
+#### 1、同一资源不同实例的BitmapDrawable，使用的是同一BitmapState对象。
+#### 2、对某个特殊Drawable可使用mutate，使其单独使用一个BitmapState对象，该操作不可逆转。
+#### 3、Drawable.getConstantState().newDrawable()虽然公用一个BitmapState,但是其Drawable.mBounds是不同的，会进行重绘。
+[Android 关于Drawable的缓存机制](参考：https://www.heqiangfly.com/2017/06/15/android-knowledge-point-drawable-cache/)
+
 
 
 
