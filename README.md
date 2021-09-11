@@ -141,7 +141,8 @@
 #### 3、Drawable.getConstantState().newDrawable()虽然公用一个BitmapState,但是其Drawable.mBounds是不同的，会进行重绘。
 [Android 关于Drawable的缓存机制](参考：https://www.heqiangfly.com/2017/06/15/android-knowledge-point-drawable-cache/)
 
-
+### 支持渠道打包：
+#### 详见gradle文件中 productFlavors 相关配置。
 
 
 
