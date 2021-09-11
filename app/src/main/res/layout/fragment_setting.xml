@@ -189,7 +189,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="40dp">
+        android:padding="40dp"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/first"
@@ -206,5 +207,13 @@
             android:background="#1E90FF"
             android:scaleType="fitXY" />
     </LinearLayout>
+
+    <!--多渠道打包测试-->
+    <Button
+        android:id="@+id/flavorProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ll_selector"
+        android:text="多渠道打包" />
 
 </LinearLayout>

@@ -32,8 +32,8 @@ android {
         applicationId "com.hongri.recyclerview"
         minSdkVersion 22
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 100
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -41,8 +41,63 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "version"
+    // 渠道包定义，默认定义的名称就是渠道名称
     productFlavors {
+        dev {
+            dimension "version"
+            //TODO 需注意这样设置的的话 applicationid 会变成 com.hongri.recyclerview.dev
+            applicationIdSuffix ".dev"
+            //TODO versionName会变成 1.0.0-dev
+            versionNameSuffix "-dev"
+        }          // 测试
+        baidu {
+            dimension "version"
+            applicationIdSuffix ".baidu"
+            versionNameSuffix "-baidu"
+        }        // 百度手机助手
+        yingyongbao {
+            dimension "version"
+            applicationIdSuffix ".yingyongbao"
+            versionNameSuffix "-yingyongbao"
+        }   // 应用宝
+//        m360 {}         // 360手机助手
+//        pp {}           // PP助手
+//        anzhi {}         // 安智市场
+//        xiaomi {}       // 小米商店
+//        letv {}         // 乐视商店
+//        huawei {}       // 华为商店
+//        lenovomm {}     // 联想乐商店
+//        other {}        // 其他市场
+//        official {}      // 官方版本
+
     }
+
+    // 批量渠道包值替换
+    productFlavors.all { flavor ->
+        // 各个渠道包， APP_STORE_CHANNEL 是根据你AndroidManifest.xml来配置的，请看下面。
+        flavor.manifestPlaceholders = [APP_STORE_CHANNEL: name]
+    }
+
+    // 输出文件配置
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def dirName = outputFile.parent // 输出文件夹所在的位置
+
+                // 文件名修改
+                def fileName = "app-${output.processResources.variantName}-${defaultConfig.versionName}-${variant.flavorName}.apk"
+
+                // 比如不想这么麻烦，直接在后面加上版本号也行：
+                // def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+
+                output.outputFileName = fileName/*new File(dirName, fileName)*/
+            }
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

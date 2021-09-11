@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -69,6 +70,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private AlphaAnimation animation;
     private LinearLayout layoutDrawable;
     private ImageView first, second;
+    private Button flavorProduct;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -210,6 +212,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         layoutDrawable = view.findViewById(R.id.layoutDrawable);
         first = view.findViewById(R.id.first);
         second = view.findViewById(R.id.second);
+        flavorProduct = view.findViewById(R.id.flavorProduct);
 
         ll_clearCache.setOnClickListener(this);
         ll_convert.setOnClickListener(this);
@@ -226,6 +229,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         layoutAnim.setOnClickListener(this);
         viewAnim.setOnClickListener(this);
         layoutDrawable.setOnClickListener(this);
+        flavorProduct.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -314,6 +318,24 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                 first.setImageDrawable(firstDrawable);
                 second.setImageDrawable(firstDrawable.getConstantState().newDrawable());
 
+                break;
+            case R.id.flavorProduct:
+                if (mActivity == null) {
+                    return;
+                }
+                ApplicationInfo appInfo = null;
+                try {
+                    appInfo = mActivity.getPackageManager().getApplicationInfo(mActivity.getPackageName(), PackageManager.GET_META_DATA);
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+                String channelName;
+                if (appInfo != null) {
+                    channelName = appInfo.metaData.getString("APP_STORE_CHANNEL");
+                } else {
+                    channelName = "default";
+                }
+                Log.d(TAG, "channelName:" + channelName);
                 break;
             default:
                 break;

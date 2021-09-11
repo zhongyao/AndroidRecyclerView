@@ -53,6 +53,10 @@
         </activity>
 
         <meta-data
+            android:name="APP_STORE_CHANNEL"
+            android:value="${APP_STORE_CHANNEL}"/>
+
+        <meta-data
             android:name="io.fabric.ApiKey"
             android:value="f99e2f57c16a4dcfca9ec8ce3f0d521318ff7765" />
 
