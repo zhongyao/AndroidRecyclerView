@@ -139,10 +139,11 @@
 #### 1、同一资源不同实例的BitmapDrawable，使用的是同一BitmapState对象。
 #### 2、对某个特殊Drawable可使用mutate，使其单独使用一个BitmapState对象，该操作不可逆转。
 #### 3、Drawable.getConstantState().newDrawable()虽然公用一个BitmapState,但是其Drawable.mBounds是不同的，会进行重绘。
-[Android 关于Drawable的缓存机制](参考：https://www.heqiangfly.com/2017/06/15/android-knowledge-point-drawable-cache/)
+[Android 关于Drawable的缓存机制](https://www.heqiangfly.com/2017/06/15/android-knowledge-point-drawable-cache/)
 
 ### 支持渠道打包：
 #### 详见gradle文件中 productFlavors 相关配置。
+[Android 多渠道打包配置](https://juejin.cn/post/6844904072131117063)
 
 
 
