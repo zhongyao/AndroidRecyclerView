@@ -26,11 +26,14 @@ public class SettingActivity extends BaseActivity implements SettingFragment.Ope
      */
     private static boolean testForADB = false;
 
+    public static boolean isSettingActivity = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         Log.d(TAG, "onCreate");
+        isSettingActivity = true;
 
         if (testForADB) {
             Intent intent = getIntent();
@@ -104,6 +107,7 @@ public class SettingActivity extends BaseActivity implements SettingFragment.Ope
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
+        isSettingActivity = false;
     }
 
     @Override

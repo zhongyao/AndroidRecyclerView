@@ -26,6 +26,8 @@ import com.hongri.recyclerview.utils.SchemeUtil;
 import com.hongri.recyclerview.utils.StatusBarUtil;
 import com.hongri.recyclerview.utils.ToastUtil;
 
+import static com.hongri.recyclerview.activity.SettingActivity.isSettingActivity;
+
 
 /**
  * @author：zhongyao on 2016/6/29 16:01
@@ -150,7 +152,7 @@ public class BaseActivity extends AppCompatActivity {
 //                startActivity(intent);
 
                 //或者【方法3】其实与【方法2】一样
-                boolean isValid = SchemeUtil.isSchemeValid(this, uriString);
+                boolean isValid = SchemeUtil.isSchemeValid(this, uriString) && !isSettingActivity;
                 Log.d(TAG, "scheme is valid:" + isValid);
                 if (isValid) {
                     //跳转之前需要判断此scheme是否有效，有效时才进行跳转；否则会引起crash。
