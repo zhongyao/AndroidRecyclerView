@@ -88,7 +88,7 @@ android {
                 def dirName = outputFile.parent // 输出文件夹所在的位置
 
                 // 文件名修改
-                def fileName = "app-${output.processResources.variantName}-${defaultConfig.versionName}-${variant.flavorName}.apk"
+                def fileName = "app-${output.processResources.variantName}-${defaultConfig.versionName}-${variant.flavorName}-${releaseTime()}.apk"
 
                 // 比如不想这么麻烦，直接在后面加上版本号也行：
                 // def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
@@ -102,6 +102,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+}
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
 /**
  *  依赖包的定义。支持maven/ivy，远程，本地库，也支持单文件，
