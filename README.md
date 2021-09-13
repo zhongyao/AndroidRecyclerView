@@ -112,6 +112,8 @@
     android:fitsSystemWindows="true"
     可以使得，系统自动为视图添加一个状态栏/导航栏高度的padding
 #### '''
+
+#### Android 5.0后支持修改系统状态栏颜色，6.0之后支持修改状态栏字体【深色(黑色)或浅色(白色)】
 <br><br/>
 
 ### 12、EditText的beforeTextChanged onTextChanged的 CharSequence s 参数赋值问题

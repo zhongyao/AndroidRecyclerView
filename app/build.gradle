@@ -30,7 +30,7 @@ android {
     buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId "com.hongri.recyclerview"
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 100
         versionName "1.0.0"
@@ -48,19 +48,19 @@ android {
         dev {
             dimension "version"
             //TODO 需注意这样设置的的话 applicationid 会变成 com.hongri.recyclerview.dev
-            applicationIdSuffix ".dev"
+//            applicationIdSuffix ".dev"
             //TODO versionName会变成 1.0.0-dev
-            versionNameSuffix "-dev"
+//            versionNameSuffix "-dev"
         }          // 测试
         baidu {
             dimension "version"
-            applicationIdSuffix ".baidu"
-            versionNameSuffix "-baidu"
+//            applicationIdSuffix ".baidu"
+//            versionNameSuffix "-baidu"
         }        // 百度手机助手
         yingyongbao {
             dimension "version"
-            applicationIdSuffix ".yingyongbao"
-            versionNameSuffix "-yingyongbao"
+//            applicationIdSuffix ".yingyongbao"
+//            versionNameSuffix "-yingyongbao"
         }   // 应用宝
 //        m360 {}         // 360手机助手
 //        pp {}           // PP助手

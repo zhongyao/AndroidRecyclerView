@@ -23,6 +23,7 @@ import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.Logger;
 import com.hongri.recyclerview.utils.SchemeUtil;
+import com.hongri.recyclerview.utils.StatusBarUtil;
 import com.hongri.recyclerview.utils.ToastUtil;
 
 
@@ -41,21 +42,7 @@ public class BaseActivity extends AppCompatActivity {
         Logger.d("BaseActivity---onCreate()");
         // 这句很关键，注意是调用父类的方法
         super.setContentView(R.layout.activity_base);
-        // 经测试在代码里直接声明透明状态栏更有效
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-//            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
-        }
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        getWindow().setStatusBarColor(0);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN |
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
+        StatusBarUtil.setStatusBar2(this);
         initToolbar();
 
         context = this;
