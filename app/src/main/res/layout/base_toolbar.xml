@@ -4,7 +4,7 @@
     android:id="@+id/my_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_31c27c"
+    android:background="@color/red"
     android:minHeight="?attr/actionBarSize"
     android:paddingTop="@dimen/toolbar_padding_top"
     android:text="Clock"

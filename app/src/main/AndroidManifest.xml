@@ -66,11 +66,11 @@
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
-            <!--<intent-filter>
-                &lt;!&ndash;<action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;
-            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <!--
             唤端配置
                  url = "http://www.orangecpp.com:80/tucao?id=hello&name=lily"
@@ -95,12 +95,9 @@
             android:launchMode="singleTask"
             android:parentActivityName=".activity.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
                 <action android:name="com.hongri.recyclerview.activity.SettingActivity" />
 
-                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <category android:name="android.intent.category.DEFAULT" />
 
                 <action android:name="android.intent.action.VIEW" />
 
