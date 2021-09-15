@@ -1,3 +1,5 @@
+//gradle相关配置/指令 可参考：https://www.heqiangfly.com/2016/03/03/development-tool-gradle-command-config/
+
 /**
  * buildscript 设置脚本的运行环境
  */
@@ -12,6 +14,26 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 //apply plugin: 'io.fabric'
+//apply plugin: 'walle'
+
+def keystoreFilepath
+def keystorePSW
+def keystoreAlias
+def keystoreAliasPSW
+// default keystore file, PLZ config file path in local.properties
+def keyfile = file('s.keystore.temp')
+
+Properties properties = new Properties()
+// local.properties file in the root director
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+keystoreFilepath = properties.getProperty("keystore.path")
+
+if (keystoreFilepath) {
+    keystorePSW = properties.getProperty("keystore.password")
+    keystoreAlias = properties.getProperty("keystore.alias")
+    keystoreAliasPSW = properties.getProperty("keystore.alias_password")
+    keyfile = file(keystoreFilepath)
+}
 
 /**
  * repositories 支持java 依赖库管理（maven/ivy）,用于项目的依赖
@@ -35,42 +57,65 @@ android {
         versionCode 100
         versionName "1.0.0"
     }
+
+//    signingConfigs {
+//        release {
+//            storeFile keyfile
+//            storePassword keystorePSW
+//            keyAlias keystoreAlias
+//            keyPassword keystoreAliasPSW
+//        }
+//
+//        debug {
+//            storeFile keyfile
+//            storePassword keystorePSW
+//            keyAlias keystoreAlias
+//            keyPassword keystoreAliasPSW
+//        }
+//    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true //启用Proguard
+            zipAlignEnabled true //是否清理无用资源,依赖于minifyEnabled
+            shrinkResources true //是否启用zipAlign压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+            ndk {
+                abiFilters "armeabi-v7a", "arm64-v8a"
+            }
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            debuggable true
+            jniDebuggable true
+            signingConfig signingConfigs.debug
         }
     }
 
-    flavorDimensions "version"
+    flavorDimensions "channel"
     // 渠道包定义，默认定义的名称就是渠道名称
     productFlavors {
         dev {
-            dimension "version"
+            dimension "channel"
             //TODO 需注意这样设置的的话 applicationid 会变成 com.hongri.recyclerview.dev
 //            applicationIdSuffix ".dev"
             //TODO versionName会变成 1.0.0-dev
 //            versionNameSuffix "-dev"
         }          // 测试
-        baidu {
-            dimension "version"
-//            applicationIdSuffix ".baidu"
-//            versionNameSuffix "-baidu"
-        }        // 百度手机助手
-        yingyongbao {
-            dimension "version"
-//            applicationIdSuffix ".yingyongbao"
-//            versionNameSuffix "-yingyongbao"
-        }   // 应用宝
-//        m360 {}         // 360手机助手
-//        pp {}           // PP助手
-//        anzhi {}         // 安智市场
-//        xiaomi {}       // 小米商店
-//        letv {}         // 乐视商店
-//        huawei {}       // 华为商店
-//        lenovomm {}     // 联想乐商店
-//        other {}        // 其他市场
-//        official {}      // 官方版本
+//        baidu {dimension "channel"}        // 百度手机助手
+//        yingyongbao {dimension "channel"}   // 应用宝
+//        m360 {dimension "channel"}         // 360手机助手
+//        pp {dimension "channel"}           // PP助手
+//        anzhi {dimension "channel"}         // 安智市场
+//        xiaomi {dimension "channel"}       // 小米商店
+//        letv {dimension "channel"}         // 乐视商店
+//        huawei {dimension "channel"}       // 华为商店
+//        lenovomm {dimension "channel"}     // 联想乐商店
+//        other {dimension "channel"}        // 其他市场
+//        official {dimension "channel"}      // 官方版本
 
     }
 
@@ -132,6 +177,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     compileOnly 'com.mcxiaoke.volley:library:1.0.+'
     implementation files('libs/rebound-0.3.8.jar')
+//    implementation 'com.meituan.android.walle:library:1.1.6'
 }
 
 //crashlytics {
