@@ -62,8 +62,9 @@
 
         <activity
             android:name=".activity.WelcomeActivity"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:noHistory="true"
+            android:alwaysRetainTaskState="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
