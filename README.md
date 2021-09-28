@@ -160,7 +160,7 @@
 
 ### 20、无法捕获的Exception：
 #### 在try catch中开启新的线程，不能捕获线程里面的异常，需要在线程里面代码处再添加try catch捕获。
-
+#### 不能判断是Exception还是Error错误，则使用其父类Throwable捕获较好。
 
 
 
