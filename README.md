@@ -155,7 +155,11 @@
 
 ### 19、支持渠道打包：
 #### 详见gradle文件中 productFlavors 相关配置。
-[Android 多渠道打包配置](https://juejin.cn/post/6844904072131117063) 
+[Android 多渠道打包配置](https://juejin.cn/post/6844904072131117063)
+
+
+### 20、无法捕获的Exception：
+#### 在try catch中开启新的线程，不能捕获线程里面的异常，需要在线程里面代码处再添加try catch捕获。
 
 
 

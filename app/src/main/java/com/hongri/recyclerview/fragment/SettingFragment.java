@@ -71,6 +71,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private LinearLayout layoutDrawable;
     private ImageView first, second;
     private Button flavorProduct;
+    private Button exceptionBtn;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -213,6 +214,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         first = view.findViewById(R.id.first);
         second = view.findViewById(R.id.second);
         flavorProduct = view.findViewById(R.id.flavorProduct);
+        exceptionBtn = view.findViewById(R.id.exceptionBtn);
 
         ll_clearCache.setOnClickListener(this);
         ll_convert.setOnClickListener(this);
@@ -230,6 +232,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         viewAnim.setOnClickListener(this);
         layoutDrawable.setOnClickListener(this);
         flavorProduct.setOnClickListener(this);
+        exceptionBtn.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -336,6 +339,28 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                     channelName = "default";
                 }
                 Log.d(TAG, "channelName:" + channelName);
+                break;
+            case R.id.exceptionBtn:
+                String a = null;
+                try {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                if (a.equals("")) {
+                                    Log.e("TAG", "it is right, no exception");
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Log.e("TAG", "e-inner:" + e);
+                            }
+                        }
+                    }).start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("TAG", "e-outer:" + e);
+                }
+
                 break;
             default:
                 break;

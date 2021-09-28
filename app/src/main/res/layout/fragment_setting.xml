@@ -216,4 +216,11 @@
         android:background="@drawable/ll_selector"
         android:text="多渠道打包" />
 
+    <Button
+        android:id="@+id/exceptionBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ll_selector"
+        android:text="无法捕获的Exception(不包含Error)"/>
+
 </LinearLayout>
