@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.utils.APPUtils;
@@ -79,6 +80,9 @@ public class BaseActivity extends AppCompatActivity {
                     case R.id.action_settings:
                         ToastUtil.ShowBottomShort(BaseActivity.this, R.string.action_settings);
                         break;
+                    case R.id.action_element:
+                        ToastUtil.ShowBottomShort(BaseActivity.this, R.string.action_activity_element);
+                        break;
                 }
                 return true;
             }
@@ -124,6 +128,11 @@ public class BaseActivity extends AppCompatActivity {
             case R.id.action_favorite:
                 ToastUtil.ShowBottomShort(BaseActivity.this, R.string.action_favorite);
                 break;
+            case R.id.action_element:
+                Intent intentElement = new Intent(this, ElementActivity.class);
+                startActivity(intentElement);
+                break;
+
             case R.id.action_settings:
 //                Intent intent = new Intent(this,SettingActivity.class);
 //                startActivity(intent);

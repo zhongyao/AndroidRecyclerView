@@ -162,7 +162,116 @@
 #### 在try catch中开启新的线程，不能捕获线程里面的异常，需要在线程里面代码处再添加try catch捕获。
 #### 不能判断是Exception还是Error错误，则使用其父类Throwable捕获较好。
 
-
+### 21、Activity的各种属性：
+#### [Activity属性配置](https://developer.android.com/guide/topics/manifest/activity-element)
+##### 
+##### '''
+                android:allowEmbedded=["true" | "false"] 
+                【一般为开发可穿戴设备时使用】
+                
+                android:allowTaskReparenting=["true" | "false"]
+                【这个标示和 Application 的标识意义一样，所以如果同时声明该标识，这个标识会覆盖 Application 的标识】
+                
+                android:alwaysRetainTaskState=["true" | "false"]
+                【这个标识用来指示系统是否始终保持 Activity 所在任务的状态。该属性只对任务的根 Activity 有意义】
+                
+                android:autoRemoveFromRecents=["true" | "false"]
+                
+                
+                android:banner="drawable resource"
+                【和 application 里面的 banner 标识一样，用在 android TV 上】
+                
+                android:clearTaskOnLaunch=["true" | "false"]
+                【当应用从主屏幕重新启动时是否都从中移除除根 Activity 之外的所有 Activity。该属性只对任务的根 Activity 有意义】
+                
+                android:colorMode=[ "hdr" | "wideColorGamut"]
+                【广色域】
+                
+                android:configChanges=["mcc", "mnc", "locale",
+                                       "touchscreen", "keyboard", "keyboardHidden",
+                                       "navigation", "screenLayout", "fontScale",
+                                       "uiMode", "orientation", "density",
+                                       "screenSize", "smallestScreenSize"]
+                【列出 Activity 将自行处理的配置更改消息】                       
+                                       
+                android:directBootAware=["true" | "false"]
+                【】
+                android:documentLaunchMode=["intoExisting" | "always" |
+                                        "none" | "never"]
+                android:enabled=["true" | "false"]
+                【该属性用来标示系统是否可将 Activity 实例化】
+                
+                android:excludeFromRecents=["true" | "false"]
+                【是否应将该 Activity 启动的任务排除在最近使用的应用列表（即概览屏幕）之外】
+                
+                android:exported=["true" | "false"]
+                【指明Activity 是否可由其他应用的组件启动】
+                
+                android:finishOnTaskLaunch=["true" | "false"]
+                【标示每当用户再次启动其任务（在主屏幕上选择任务）时，是否应关闭（完成）现有 Activity 实例 】
+                
+                android:hardwareAccelerated=["true" | "false"]
+                【是否应为此 Activity 启用硬件加速渲染】
+                
+                android:icon="drawable resource"
+                【一个表示 Activity 的图标。该图标会在需要在屏幕上表示 Activity 时显示给用户。】
+                
+                android:immersive=["true" | "false"]
+                android:label="string resource"
+                【一种可由用户读取的 Activity 标签。该标签会在必须将 Activity 呈现给用户时显示在屏幕上】
+                
+                android:launchMode=["standard" | "singleTop" |
+                                    "singleTask" | "singleInstance"]
+                android:lockTaskMode=["normal" | "never" |
+                                    "if_whitelisted" | "always"]
+                android:maxRecents="integer"
+                【该标识用来指明概览屏幕中位于此 Activity 根位置的任务数上限。 达到该条目数时，系统会从概览屏幕中移除最近最少使用的实例。】
+                
+                android:maxAspectRatio="float"
+                android:multiprocess=["true" | "false"]
+                【该标识用来指明是否可以将 Activity 实例启动到启动该实例的组件进程内】
+                
+                android:name="string"
+                android:noHistory=["true" | "false"]  
+                【当用户离开 Activity 并且其在屏幕上不再可见时，是否应从 Activity 堆栈中将其移除并完成。如果为true，系统永远不会调用 onActivityResult()】
+                
+                android:parentActivityName="string" 
+                【Activity 逻辑父项的类名称。】
+                android:persistableMode=["persistRootOnly" | 
+                                         "persistAcrossReboots" | "persistNever"]
+                android:permission="string"
+                android:process="string"
+                【应在其中运行 Activity 的进程的名称】
+                android:relinquishTaskIdentity=["true" | "false"]
+                android:resizeableActivity=["true" | "false"]
+                【代表这个 activity 是否支持分屏模式。】
+                
+                android:screenOrientation=["unspecified" | "behind" |
+                                           "landscape" | "portrait" |
+                                           "reverseLandscape" | "reversePortrait" |
+                                           "sensorLandscape" | "sensorPortrait" |
+                                           "userLandscape" | "userPortrait" |
+                                           "sensor" | "fullSensor" | "nosensor" |
+                                           "user" | "fullUser" | "locked"]
+                android:showForAllUsers=["true" | "false"]
+                android:stateNotNeeded=["true" | "false"]
+                【能否在不保存 Activity 状态的情况下将其终止并成功重新启动】
+                
+                android:supportsPictureInPicture=["true" | "false"]
+                【指定 Activity 是否支持画中画显示，设置该属性的同时，需要将 android:resizeableActivity 标识设置为 true】
+                
+                android:taskAffinity="string"
+                android:theme="resource or theme"
+                android:uiOptions=["none" | "splitActionBarWhenNarrow"]
+                【主要是用来针对 action bar 的】
+                
+                android:windowSoftInputMode=["stateUnspecified",
+                                             "stateUnchanged", "stateHidden",
+                                             "stateAlwaysHidden", "stateVisible",
+                                             "stateAlwaysVisible", "adjustUnspecified",
+                                             "adjustResize", "adjustPan"]
+                 【这个标识用来设置 Activity 的主窗口与包含屏幕软键盘的窗口的交互方式】
+##### '''
 
 
 

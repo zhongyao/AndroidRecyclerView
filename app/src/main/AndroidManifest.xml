@@ -6,29 +6,20 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-
-    <!-- 应用角标权限 BEGIN -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 应用角标权限 BEGIN -->
     <!-- VIVO -->
-    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON" />
-    <!-- 华为 -->
+    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON" /> <!-- 华为 -->
     <uses-permission android:name=" com.huawei.android.launcher.permission.CHANGE_BADGE" />
-    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
-    <!-- 三星 -->
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- 三星 -->
     <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
-    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />
-    <!-- HTC -->
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- HTC -->
     <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" />
-    <!-- Sony -->
-    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
-    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE"/>
-    <!-- Apex -->
-    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT"/>
-    <!-- Solid -->
-    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE"/>
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- Sony -->
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- Apex -->
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- Solid -->
+    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
     <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS" />
-    <!-- 应用角标权限 END -->
 
     <application
         android:name=".MyApplication"
@@ -37,7 +28,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon, android:label, android Theme">
+        tools:replace="android:icon, android:label">
+
         <service
             android:name=".service.MyService"
             android:enabled="true"
@@ -47,7 +39,8 @@
             </intent-filter>
         </service>
 
-        <receiver android:name=".broadcast.MyBroadcast"
+        <receiver
+            android:name=".broadcast.MyBroadcast"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -59,9 +52,7 @@
             android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTask"
-            android:theme="@style/SplashTheme">
-
-        </activity>
+            android:theme="@style/SplashTheme"></activity>
         <activity
             android:name=".activity.BaseActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
@@ -78,17 +69,16 @@
 
         <meta-data
             android:name="APP_STORE_CHANNEL"
-            android:value="${APP_STORE_CHANNEL}"/>
-
+            android:value="${APP_STORE_CHANNEL}" />
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="f99e2f57c16a4dcfca9ec8ce3f0d521318ff7765" />
 
         <activity
             android:name=".activity.WelcomeActivity"
+            android:alwaysRetainTaskState="true"
             android:launchMode="singleTop"
             android:noHistory="true"
-            android:alwaysRetainTaskState="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -134,6 +124,16 @@
                     android:port="6666"
                     android:scheme="hongri" />
             </intent-filter>
+        </activity>
+
+        <!---->
+        <activity
+            android:name=".activity.ElementActivity"
+            android:label="ElementActivity"
+            android:allowEmbedded="true"
+            android:icon="@drawable/girl"
+            android:uiOptions="splitActionBarWhenNarrow">
+
         </activity>
     </application>
 
