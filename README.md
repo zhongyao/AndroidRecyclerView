@@ -273,6 +273,8 @@
                  【这个标识用来设置 Activity 的主窗口与包含屏幕软键盘的窗口的交互方式】
 ##### '''
 
+### 22、添加缓存清理类 APPCacheUtil 对比原有的 CacheClearManager类。
+
 
 
 

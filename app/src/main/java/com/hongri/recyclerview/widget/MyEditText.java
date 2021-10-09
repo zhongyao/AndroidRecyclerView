@@ -176,6 +176,7 @@ public class MyEditText extends AppCompatEditText {
                 if (mOnPasteCallback != null) {
                     mOnPasteCallback.onPaste();
                 }
+                break;
         }
         return super.onTextContextMenuItem(id);
     }
