@@ -182,7 +182,7 @@ public class MyEditText extends AppCompatEditText {
     }
 
     /**
-     * 从软键盘获取输入的方法【此方法可以判断TextWatcher监听的方法触发是1、setText触发还是键盘输入触发---键盘输入触发会调用此方法】
+     * 从软键盘获取输入的方法【此方法可以判断TextWatcher监听的方法触发是1、setText触发还是键盘输入触发---键盘输入时会触发调用此方法（即用户点击EditText首次获取焦点弹出键盘时）】
      * @param outAttrs
      * @return
      */
