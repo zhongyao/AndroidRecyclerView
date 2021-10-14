@@ -275,6 +275,12 @@
 
 ### 22、添加缓存清理类 APPCacheUtil 对比原有的 CacheClearManager类。
 
+### Java8 interface新特性：
+#### 1、支持静态成员，成员默认是public final static的。
+#### 2、可以有方法的实现(加default关键字)。
+#### 3、可以有静态方法(加static关键字)。
+#### 4、支持函数式接口(加functionalInterface关键字)
+
 
 
 
