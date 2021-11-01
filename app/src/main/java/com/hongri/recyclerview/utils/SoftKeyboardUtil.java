@@ -17,7 +17,7 @@ public class SoftKeyboardUtil {
     private static final String TAG = "SoftKeyboardUtil";
 
     /**
-     * 【较可靠方案】判断输入法是否显示
+     * 【较可靠方案】判断输入法软键盘是否显示
      * @return
      */
     public static boolean isSoftShowing(Activity activity) {
@@ -28,6 +28,7 @@ public class SoftKeyboardUtil {
         int screenHeight = activity.getWindow().getDecorView().getHeight();
         //获取View可见区域的bottom
         Rect rect = new Rect();
+        //getWindowVisibleDisplayFrame 通过IPC通信，从WindowManager获取，故该方法不适合在性能要求较高地方使用，如View的draw方法中。
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
 
         Log.d(TAG, "screenHeight:" + screenHeight + " rect.bottom:" + rect.bottom);
