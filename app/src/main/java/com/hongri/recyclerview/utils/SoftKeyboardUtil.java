@@ -2,6 +2,8 @@ package com.hongri.recyclerview.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -12,6 +14,26 @@ import java.util.List;
  * Description: 软键盘工具类
  */
 public class SoftKeyboardUtil {
+    private static final String TAG = "SoftKeyboardUtil";
+
+    /**
+     * 【较可靠方案】判断输入法是否显示
+     * @return
+     */
+    public static boolean isSoftShowing(Activity activity) {
+        if (activity == null) {
+            return false;
+        }
+        //获取当前屏幕内容的高度
+        int screenHeight = activity.getWindow().getDecorView().getHeight();
+        //获取View可见区域的bottom
+        Rect rect = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+
+        Log.d(TAG, "screenHeight:" + screenHeight + " rect.bottom:" + rect.bottom);
+        return screenHeight * 2 / 3 > rect.bottom;
+    }
+
 
     /**
      * 隐藏软键盘(只适用于Activity，不适用于Fragment)

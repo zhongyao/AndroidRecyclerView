@@ -290,7 +290,11 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                 onEditTextClick();
                 break;
             case R.id.testKB:
-                onTestKeyBoard();
+                boolean isSoftShowing = SoftKeyboardUtil.isSoftShowing(getActivity());
+                Log.d(TAG, "isSoftShowing:" + isSoftShowing);
+                if (isSoftShowing) {
+                    onTestKeyBoard();
+                }
                 break;
             case R.id.badgeBtn:
                 badgeShow();
