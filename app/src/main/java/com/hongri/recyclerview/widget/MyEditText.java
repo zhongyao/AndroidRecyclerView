@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
+import android.graphics.Canvas;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -45,6 +46,24 @@ public class MyEditText extends AppCompatEditText {
         super(context, attrs);
 
         init();
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        Log.d(TAG, "onMeasure");
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        Log.d(TAG, "onLayout");
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        Log.d(TAG, "onDraw");
     }
 
     private void init() {
