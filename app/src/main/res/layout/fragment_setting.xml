@@ -221,6 +221,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ll_selector"
-        android:text="无法捕获的Exception(不包含Error)"/>
+        android:text="无法捕获的Exception(不包含Error)" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/timer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ll_selector"
+            android:text="计时器" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:text="" />
+
+    </LinearLayout>
+
 
 </com.hongri.recyclerview.widget.SettingLayout>

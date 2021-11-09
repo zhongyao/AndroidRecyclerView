@@ -1,6 +1,5 @@
 package com.hongri.recyclerview.fragment;
 
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.speech.RecognizerIntent;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.telephony.mbms.MbmsErrors;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,7 +22,6 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,6 +36,7 @@ import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.threadpool.ThreadPoolTester;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.SoftKeyboardUtil;
+import com.hongri.recyclerview.utils.TimeCountDown;
 import com.hongri.recyclerview.utils.ToastUtil;
 import com.hongri.recyclerview.widget.MyEditText;
 
@@ -72,6 +70,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private ImageView first, second;
     private Button flavorProduct;
     private Button exceptionBtn;
+    private Button timer;
+    private TextView tvTimer;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -215,6 +215,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         second = view.findViewById(R.id.second);
         flavorProduct = view.findViewById(R.id.flavorProduct);
         exceptionBtn = view.findViewById(R.id.exceptionBtn);
+        timer = view.findViewById(R.id.timer);
+        tvTimer = view.findViewById(R.id.tvTimer);
+
 
         ll_clearCache.setOnClickListener(this);
         ll_convert.setOnClickListener(this);
@@ -233,6 +236,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         layoutDrawable.setOnClickListener(this);
         flavorProduct.setOnClickListener(this);
         exceptionBtn.setOnClickListener(this);
+        timer.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -365,6 +369,30 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                     Log.e("TAG", "e-outer:" + e);
                 }
 
+                break;
+            case R.id.timer:
+                String[] strings = new String[]{"你好", "我好", "大家好", "同志们好", "乡亲们好"};
+                TimeCountDown timeCountDown = new TimeCountDown(strings.length * 1000, 300);
+                timeCountDown.setListener(new TimeCountDown.ICountListener() {
+                    int count = 0;
+                    StringBuilder builder = new StringBuilder();
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        if (count < 0 || count >= strings.length) {
+                            return;
+                        }
+                        builder.append(strings[count]);
+                        tvTimer.setText(builder.toString());
+                        count++;
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        tvTimer.setText("结束");
+                    }
+                });
+                timeCountDown.start();
                 break;
             default:
                 break;

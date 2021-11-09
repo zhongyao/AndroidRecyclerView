@@ -281,6 +281,8 @@
 #### 3、可以有静态方法(加static关键字)。
 #### 4、支持函数式接口(加functionalInterface关键字)
 
+### 23、定时器【间隔器】业务处理，查看：TimeCountDown
+
 
 
 
