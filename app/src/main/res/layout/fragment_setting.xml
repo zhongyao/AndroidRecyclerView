@@ -12,7 +12,8 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingTop="@dimen/margin_10dp"
-        android:paddingBottom="@dimen/margin_10dp">
+        android:paddingBottom="@dimen/margin_10dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv"
@@ -35,7 +36,8 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingTop="@dimen/margin_10dp"
-        android:paddingBottom="@dimen/margin_10dp">
+        android:paddingBottom="@dimen/margin_10dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_convert"
@@ -57,7 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
         android:background="@drawable/ll_selector"
-        android:text="@string/vibrator" />
+        android:text="@string/vibrator"
+        android:visibility="gone" />
 
     <!--语音识别-->
     <Button
@@ -226,7 +229,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/timer"
@@ -240,12 +244,32 @@
             android:id="@+id/tvTimer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_weight="1"
             android:background="@color/white"
+            android:gravity="center"
             android:text="" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ll_selector"
+        android:text="不渲染情况下，计算TextView高度" />
+    <TextView
+        android:id="@+id/textW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ll_selector"
+        android:text="不渲染情况下，计算文本宽度" />
+
+    <TextView
+        android:id="@+id/textContent"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ll_selector"
+        android:text="哈哈" />
 
 
 </com.hongri.recyclerview.widget.SettingLayout>

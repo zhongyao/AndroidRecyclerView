@@ -8,6 +8,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.speech.RecognizerIntent;
 
@@ -38,6 +39,7 @@ import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.SoftKeyboardUtil;
 import com.hongri.recyclerview.utils.TimeCountDown;
 import com.hongri.recyclerview.utils.ToastUtil;
+import com.hongri.recyclerview.widget.AlxTextView;
 import com.hongri.recyclerview.widget.MyEditText;
 
 import java.util.ArrayList;
@@ -72,7 +74,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private Button exceptionBtn;
     private Button timer;
     private TextView tvTimer;
+    private TextView textH, textContent;
+    private TextView textW;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
+    private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
 
     @Override
     public void onAttach(Context context) {
@@ -217,6 +222,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         exceptionBtn = view.findViewById(R.id.exceptionBtn);
         timer = view.findViewById(R.id.timer);
         tvTimer = view.findViewById(R.id.tvTimer);
+        textH = view.findViewById(R.id.textH);
+        textW = view.findViewById(R.id.textW);
+        textContent = view.findViewById(R.id.textContent);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -237,6 +245,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         flavorProduct.setOnClickListener(this);
         exceptionBtn.setOnClickListener(this);
         timer.setOnClickListener(this);
+        textH.setOnClickListener(this);
+        textW.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -394,6 +404,27 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                 });
                 timeCountDown.start();
                 break;
+            case R.id.textH:
+                AlxTextView alxTextView = new AlxTextView(getActivity(), content, 200, 15);
+                textContent.setText(content);
+                textContent.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "inner --> height:" + textContent.getHeight());
+                    }
+                },500);
+
+                int[] measureResult = alxTextView.measureTextViewHeight(textContent, content, 210, 100);
+                Log.d(TAG, "measureHeight:" + measureResult[1]);
+                break;
+
+            case R.id.textW:
+                textW.setTextSize(30);
+                float contentWidth = AlxTextView.getTextSize(textW, content);
+                Log.d(TAG, "contentWidth:" + contentWidth);
+                textW.setText(content);
+                break;
+
             default:
                 break;
         }
