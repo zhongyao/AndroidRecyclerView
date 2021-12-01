@@ -36,6 +36,7 @@ import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.threadpool.ThreadPoolTester;
 import com.hongri.recyclerview.utils.APPUtils;
+import com.hongri.recyclerview.utils.CustomToast;
 import com.hongri.recyclerview.utils.SoftKeyboardUtil;
 import com.hongri.recyclerview.utils.TimeCountDown;
 import com.hongri.recyclerview.utils.ToastUtil;
@@ -76,8 +77,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private TextView tvTimer;
     private TextView textH, textContent;
     private TextView textW;
+    private TextView tvToast;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
+    private CustomToast toast;
 
     @Override
     public void onAttach(Context context) {
@@ -225,6 +228,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         textH = view.findViewById(R.id.textH);
         textW = view.findViewById(R.id.textW);
         textContent = view.findViewById(R.id.textContent);
+        tvToast = view.findViewById(R.id.tvToast);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -247,6 +251,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         timer.setOnClickListener(this);
         textH.setOnClickListener(this);
         textW.setOnClickListener(this);
+        tvToast.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -412,7 +417,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                     public void run() {
                         Log.d(TAG, "inner --> height:" + textContent.getHeight());
                     }
-                },500);
+                }, 500);
 
                 int[] measureResult = alxTextView.measureTextViewHeight(textContent, content, 210, 100);
                 Log.d(TAG, "measureHeight:" + measureResult[1]);
@@ -424,10 +429,25 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                 Log.d(TAG, "contentWidth:" + contentWidth);
                 textW.setText(content);
                 break;
+            case R.id.tvToast:
+
+//                CustomToast customToast = new CustomToast(getActivity(), getActivity().findViewById(R.id.toast_custom_parent));
+//                customToast.show(content, 10000);
+                toastMessage(content);
+                break;
 
             default:
                 break;
         }
+    }
+
+    private void toastMessage(String content) {
+        if (toast != null) {
+            toast.hide();
+        }
+        toast = new CustomToast(getActivity(),
+                (ViewGroup) getActivity().findViewById(R.id.toast_custom_parent));
+        toast.show(content, 30000);
     }
 
     /**
