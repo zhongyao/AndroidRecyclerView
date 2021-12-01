@@ -283,6 +283,8 @@
 
 ### 23、定时器【间隔器】业务处理，查看：TimeCountDown
 
+### 24、新增自定义Toast【CustomToast】
+#### 可控制Toast的布局跟时长
 
 
 
