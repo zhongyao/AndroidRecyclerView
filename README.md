@@ -260,7 +260,7 @@
                 android:supportsPictureInPicture=["true" | "false"]
                 【指定 Activity 是否支持画中画显示，设置该属性的同时，需要将 android:resizeableActivity 标识设置为 true】
                 
-                android:taskAffinity="string"
+                android:taskAffinity="string"[TODO 对此属性尚有疑惑]
                 【任务相关性---这个参数标识了一个Activity所需要的任务栈的名字，taskAffinity属性主要和singleTask启动模式或者allowTaskReparenting属性配对使用，在其他情况下没有意义
                 1、当taskAffinity和singleTask启动模式配对使用的时候，它是具有该模式的Activity的目前任务栈的名字，待启动的Activity会运行在名字和taskAffinity相同的任务栈中。
                 2、当taskAffinity和allowTaskReparenting结合的时候，会产生特殊的效果。如当一个应用A启动了一个应用B中的某个Activity后，如果这个Activity的allowTaskReparenting属性为true的话，
