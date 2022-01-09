@@ -61,7 +61,10 @@ public class AppFrontBackHelper {
 
         @Override
         public void onActivityResumed(Activity activity) {
-            Log.d(TAG, "onActivityResumed---> activity:" + activity);
+            if (activity == null) {
+                return;
+            }
+            Log.d(TAG, "onActivityResumed---> activity:" + activity.getClass().getSimpleName()+"#### taskid = "+activity.getTaskId());
             if (mOnAppStatusListener != null) {
                 mOnAppStatusListener.onResume(activity);
             }

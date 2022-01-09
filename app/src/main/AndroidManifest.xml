@@ -126,13 +126,20 @@
             </intent-filter>
         </activity>
 
-        <!---->
+        <!--Activity属性值-->
         <activity
             android:name=".activity.ElementActivity"
             android:label="ElementActivity"
             android:allowEmbedded="true"
+            android:taskAffinity="com.hongri.special.task"
             android:icon="@drawable/girl"
-            android:uiOptions="splitActionBarWhenNarrow">
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:allowTaskReparenting="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.hongri.element.activity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
 
         </activity>
     </application>
