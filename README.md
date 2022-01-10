@@ -3,11 +3,13 @@
 <br><br/>
 <br><br/>
 
-### RecyclerView四级缓存:
-#### (1)、Scrap是屏幕内的缓存，一般不需要我们做处理。
-#### (2)、Cache可直接拿来复用的缓存，性能高效。
+### RecyclerView四级缓存【缓存的对象是ViewHolder】:
+#### (1)、Scrap是屏幕内的缓存，一般不需要我们做处理，通过position去找ViewHolder可以直接复用。
+#### (2)、Cache可直接拿来复用的缓存，性能高效，同样是通过position去找ViewHolder可以直接复用。
 #### (3)、ViewCacheExtension，需要开发者自定义的缓存，API设计比较奇怪，慎用。
-#### (4)、RecycledViewPool四级缓存，可以避免用户调用onCreateViewHolder()方法，提高性能。在ViewPager+RecyclerView的应用场景下可以大有作为
+#### (4)、RecycledViewPool四级缓存，通过type来获取ViewHolder，获取的ViewHolder是全新的，需要重新绑定数据。
+####      也就是说可以避免用户调用onCreateViewHolder()方法，提高性能。
+####      在ViewPager+RecyclerView的应用场景下可以大有作为
 #### [让你彻底掌握RecyclerView的缓存机制](https://www.jianshu.com/p/3e9aa4bdaefd)
 <br><br/>
 
