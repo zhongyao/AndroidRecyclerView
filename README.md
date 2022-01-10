@@ -1,3 +1,7 @@
+## 该项目中有多种关于RecyclerView方面的应用，可直接运行项目查看。另外在SettingActivity中有总结项目中用到的其他Android碎片化知识点，有需要的也可按需查阅。
+<br><br/>
+<br><br/>
+
 ### RecyclerView四级缓存:
 #### (1)、Scrap是屏幕内的缓存，一般不需要我们做处理。
 #### (2)、Cache可直接拿来复用的缓存，性能高效。
