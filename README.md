@@ -1,4 +1,5 @@
-## 该项目中有多种关于RecyclerView方面的应用，可直接运行项目查看。另外在SettingActivity中有总结项目中用到的其他Android碎片化知识点，有需要的也可按需查阅。
+### 该项目中有多种关于RecyclerView方面的应用，可直接运行项目查看。
+### 另外在SettingActivity中有总结项目中用到的其他Android碎片化知识点，有需要的也可按需查阅。
 <br><br/>
 <br><br/>
 
