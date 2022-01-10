@@ -1,4 +1,12 @@
-## 1、浏览器唤端：
+### RecyclerView四级缓存:
+#### (1)、Scrap是屏幕内的缓存，一般不需要我们做处理。
+#### (2)、Cache可直接拿来复用的缓存，性能高效。
+#### (3)、ViewCacheExtension，需要开发者自定义的缓存，API设计比较奇怪，慎用。
+#### (4)、RecycledViewPool四级缓存，可以避免用户调用onCreateViewHolder()方法，提高性能。在ViewPager+RecyclerView的应用场景下可以大有作为
+#### [让你彻底掌握RecyclerView的缓存机制](https://www.jianshu.com/p/3e9aa4bdaefd)
+<br><br/>
+
+### 1、浏览器唤端：
 #### 在浏览器中打开目录中的deeplink.html文件，文件有写到唤端路由："hongri://recyclerview:8888/welcome?id=100&name=yao"
 #### 唤起WelcomeActivity页面，WelcomeActivity中有相关的唤端参数的解析
 <br><br/>
@@ -8,24 +16,24 @@
 #### Native唤端最好先通过SchemeUtil.isSchemeValid方法判断该scheme是否存在，如果存在时再进行跳转，否则会引起crash。
 <br><br/>
 
-## 3、WebView跳转到activity示例:
+### 3、WebView跳转到activity示例:
 #### <1>通过shouldOverrideUrlLoading重定向：
 #### <2>通过scheme跳转【intent-filter】即类似上面的--浏览器唤端
 #### <3>JS与Android交互跳转 addJavascriptInterface 等
 <br><br/>
 
-## 4、EditText剪切 复制 粘贴事件捕获：
+### 4、EditText剪切 复制 粘贴事件捕获：
 #### override EditText的onTextContextMenuItem方法。
 <br><br/>
 
-## 5、EditText及TextView对输入的文字进行过滤：
+### 5、EditText及TextView对输入的文字进行过滤：
 #### this.setFilters(new InputFilter[]{new EditPatternFilter("^\\s{0,1}[0-9]{0,1}$")}); //后面是进行过滤的正则表达式
 <br><br/>
 
-## 6、DrawableUtil工具类方法createRectangleDrawable--可设置各个角的圆角效果。
+### 6、DrawableUtil工具类方法createRectangleDrawable--可设置各个角的圆角效果。
 <br><br/>
 
-## 7、各图片文件夹对应分辨率及dpi
+### 7、各图片文件夹对应分辨率及dpi
 ###   文件夹名称	分辨率	dpi	density
 ###     ldpi	 	120dpi	0.75
 ###     mdpi	 	160dpi 	1
@@ -45,7 +53,7 @@
 #### 参考：https://blog.csdn.net/guolin_blog/article/details/50727753
 <br><br/>
 
-## 8、APP进入到某个页面后，按home键，在回到APP，如果想保持原有界面，方法有：
+### 8、APP进入到某个页面后，按home键，在回到APP，如果想保持原有界面，方法有：
 ####（1）设置启动Activity的launchMode:singleTop ---> standard(或singleTop).并且在启动页跳转MainActivity时finish掉即可(或设置启动页android:noHistory="true"--类似于finish)。
 #### (2) 如果启动Activity的launchMode必须设置为singleTask,怎可在启动Activity的onCreate方法中加入如下代码即可： 
 #### '''
@@ -63,13 +71,13 @@
 ####     '''
 <br><br/>
 
-## 9、Activity启动模式：
+### 9、Activity启动模式：
 #### (1)singleInstance 的使用场景：适合需要与程序分离开的页面。如闹钟提醒，将闹铃提醒与闹铃设置分离。
 #### (2)singleTask 适合作为程序的入口点。
 #### (3)singleTop 适合接收通知启动的内容显示页面。
 <br><br/>
 
-## 10、EditText属性：
+### 10、EditText属性：
 #### 默认非单行，故点击软键盘回车键，会自动换行。
 #### android:singleLine="true"(必加，下同) android:imeOptions="actionSend" -->"发送"
 #### android:imeOptions="actionSearch" -->"搜索"
@@ -79,7 +87,7 @@
 <br><br/>
 
 
-## 11、状态栏/导航栏
+### 11、状态栏/导航栏
 #### 状态栏和导航栏窗口是系统级窗口而Activity对应的时应用窗口，它们属于不同的窗口层级
 #### '''
     <style name="TestTheme" parent="android:Theme.Material.NoActionBar">
