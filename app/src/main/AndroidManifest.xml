@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 应用角标权限 BEGIN -->
     <!-- VIVO -->
     <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON" /> <!-- 华为 -->
@@ -29,6 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon, android:label">
+        <activity android:name=".activity.ShareTestActivity"></activity>
 
         <service
             android:name=".service.MyService"
@@ -52,7 +54,7 @@
             android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTask"
-            android:theme="@style/SplashTheme"></activity>
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".activity.BaseActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
@@ -124,24 +126,32 @@
                     android:port="6666"
                     android:scheme="hongri" />
             </intent-filter>
-        </activity>
-
-        <!--Activity属性值-->
+        </activity> <!-- Activity属性值 -->
         <activity
             android:name=".activity.ElementActivity"
-            android:label="ElementActivity"
             android:allowEmbedded="true"
-            android:taskAffinity="com.hongri.special.task"
-            android:icon="@drawable/girl"
-            android:uiOptions="splitActionBarWhenNarrow"
             android:allowTaskReparenting="true"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@drawable/girl"
+            android:label="ElementActivity"
+            android:taskAffinity="com.hongri.special.task"
+            android:uiOptions="splitActionBarWhenNarrow">
             <intent-filter>
-                <action android:name="com.hongri.element.activity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+                <action android:name="com.hongri.element.activity" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.hongri.recyclerview.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

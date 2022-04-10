@@ -262,25 +262,33 @@
         android:id="@+id/textW"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:gravity="center"
         android:background="@drawable/ll_selector"
+        android:gravity="center"
         android:text="不渲染情况下，计算文本宽度" />
 
     <TextView
         android:id="@+id/textContent"
         android:layout_width="70dp"
         android:layout_height="30dp"
-        android:gravity="center"
         android:background="@drawable/ll_selector"
+        android:gravity="center"
         android:text="哈哈" />
 
     <TextView
         android:id="@+id/tvToast"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:gravity="center"
         android:background="@drawable/ll_selector"
+        android:gravity="center"
         android:text="自定义Toast[布局 + 时长]" />
+
+    <TextView
+        android:id="@+id/tvShare"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/ll_selector"
+        android:gravity="center"
+        android:text="系统分享" />
 
 
 </com.hongri.recyclerview.widget.SettingLayout>

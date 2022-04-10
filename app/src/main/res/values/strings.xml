@@ -21,7 +21,11 @@
     <string name="inputEditText">输入框</string>
     <string name="view">View事件</string>
     <string name="android_art">O(∩_∩)O哈哈~欢迎来到AndroidArt世界</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--分享-->
+    <string name="share_system_title">系统分享示例</string>
+    <string name="share_text">文本分享</string>
+    <string name="share_image">图片分享</string>
+    <string name="share_multi_image">多图分享</string>
 </resources>

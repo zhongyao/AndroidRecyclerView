@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.activity.MainActivity;
+import com.hongri.recyclerview.activity.ShareTestActivity;
 import com.hongri.recyclerview.badge.BadgeClient;
 import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
@@ -78,6 +79,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private TextView textH, textContent;
     private TextView textW;
     private TextView tvToast;
+    private TextView tvShare;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
     private CustomToast toast;
@@ -229,6 +231,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         textW = view.findViewById(R.id.textW);
         textContent = view.findViewById(R.id.textContent);
         tvToast = view.findViewById(R.id.tvToast);
+        tvShare = view.findViewById(R.id.tvShare);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -252,6 +255,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         textH.setOnClickListener(this);
         textW.setOnClickListener(this);
         tvToast.setOnClickListener(this);
+        tvShare.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -434,6 +438,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
 //                CustomToast customToast = new CustomToast(getActivity(), getActivity().findViewById(R.id.toast_custom_parent));
 //                customToast.show(content, 10000);
                 toastMessage(content);
+                break;
+            case R.id.tvShare:
+                Intent intent = new Intent(getActivity(), ShareTestActivity.class);
+                startActivity(intent);
                 break;
 
             default:
