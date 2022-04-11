@@ -28,4 +28,5 @@
     <string name="share_text">文本分享</string>
     <string name="share_image">图片分享</string>
     <string name="share_multi_image">多图分享</string>
+    <string name="share_to_special_app">分享时显示指定app</string>
 </resources>

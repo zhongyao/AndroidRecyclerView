@@ -40,4 +40,13 @@
         android:text="@string/share_multi_image"
         app:layout_constraintTop_toBottomOf="@id/btnShareImage" />
 
+    <Button
+        android:id="@+id/btnShareToSpecialApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/share_to_special_app"
+        app:layout_constraintTop_toBottomOf="@id/btnShareMultiImage" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

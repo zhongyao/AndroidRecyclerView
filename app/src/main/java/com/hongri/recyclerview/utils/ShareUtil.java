@@ -1,14 +1,19 @@
 package com.hongri.recyclerview.utils;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Parcelable;
 
 import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 参考：https://www.jianshu.com/p/24c6b42ad23e
@@ -76,6 +81,7 @@ public class ShareUtil {
     /**
      * 多图分享
      * //TODO 微信多图分享有限制,无法分享成功,后续研究下
+     *
      * @param context
      * @param localImages
      */
@@ -111,5 +117,39 @@ public class ShareUtil {
         }
         return SHARE_RESULT_NO_ERROR;
 
+    }
+
+    public static int shareSpecifiedApp(Context context, String contentText) {
+        try {
+            List<Intent> targetIntents = new ArrayList<>();
+            //获取所有支持ACTION_SEND的应用
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            PackageManager pm = context.getPackageManager();
+            List<ResolveInfo> resInfos = pm.queryIntentActivities(shareIntent, 0);
+            //对目标引用进行判断
+            if (resInfos != null && resInfos.size() > 0) {
+                for (ResolveInfo info : resInfos) {
+                    if ("com.tencent.mobileqq".equals(info.activityInfo.packageName)
+                            || "com.tencent.mm".equals(info.activityInfo.packageName)) {
+
+                        Intent target = new Intent(Intent.ACTION_SEND);
+                        target.setType("text/plain");
+                        target.putExtra(Intent.EXTRA_TEXT, contentText);
+                        target.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
+                        targetIntents.add(target);
+                    }
+                }
+            }
+            //创建应用选择框
+            Intent chooserIntent = Intent.createChooser(targetIntents.remove(0), "share");
+            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetIntents.toArray(new Parcelable[]{}));
+            context.startActivity(chooserIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return SHARE_RESULT_NO_ERROR;
     }
 }

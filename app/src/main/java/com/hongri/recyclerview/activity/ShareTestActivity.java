@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class ShareTestActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static String TAG = "ShareTestActivity";
-    private Button btnShareText, btnShareImage, btnShareMultiImage;
+    private Button btnShareText, btnShareImage, btnShareMultiImage, btnShareToSpecialApp;
     private String imageUrl = "https://img1.baidu.com/it/u=3754966325,1403601599&fm=253&fmt=auto&app=120&f=JPEG?w=1024&h=640";
     private String imageUrl2 = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Ff7ee82e2354854624b89737fdb82365036eaf18a32bc3-rqjJB2_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1652188646&t=fcc27b04f59325e85dafa6d0123991e4";
     //localImage需是你当前测试设备中已有的图片
@@ -36,10 +36,12 @@ public class ShareTestActivity extends AppCompatActivity implements View.OnClick
         btnShareText = findViewById(R.id.btnShareText);
         btnShareImage = findViewById(R.id.btnShareImage);
         btnShareMultiImage = findViewById(R.id.btnShareMultiImage);
+        btnShareToSpecialApp = findViewById(R.id.btnShareToSpecialApp);
 
         btnShareText.setOnClickListener(this);
         btnShareImage.setOnClickListener(this);
         btnShareMultiImage.setOnClickListener(this);
+        btnShareToSpecialApp.setOnClickListener(this);
     }
 
     @Override
@@ -62,6 +64,9 @@ public class ShareTestActivity extends AppCompatActivity implements View.OnClick
                 localImages.add(localImage);
                 localImages.add(localImage2);
                 ShareUtil.shareMultiPic(this, localImages);
+                break;
+            case R.id.btnShareToSpecialApp:
+                ShareUtil.shareSpecifiedApp(this, "呵呵呵呵");
                 break;
 
             default:
