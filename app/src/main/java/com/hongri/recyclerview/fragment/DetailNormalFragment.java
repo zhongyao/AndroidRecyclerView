@@ -1,7 +1,11 @@
 package com.hongri.recyclerview.fragment;
 
 
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -11,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +23,9 @@ import android.view.ViewGroup;
 import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.adapter.DetailNormalViewAdapter;
 import com.hongri.recyclerview.common.APPConstants;
+import com.hongri.recyclerview.decoration.GridDividerItemDecoration;
+import com.hongri.recyclerview.decoration.HorizontalSpacesDecoration;
+import com.hongri.recyclerview.decoration.RecyclerViewDivider;
 import com.hongri.recyclerview.utils.DataUtil;
 import com.hongri.recyclerview.utils.Logger;
 import com.hongri.recyclerview.utils.ToastUtil;
@@ -45,6 +53,7 @@ public class DetailNormalFragment extends Fragment implements DetailNormalViewAd
 
     /**
      * 使用单例模式，只生成一个实例
+     *
      * @param position
      * @param title
      * @return
@@ -100,10 +109,16 @@ public class DetailNormalFragment extends Fragment implements DetailNormalViewAd
             APPConstants.type = position;
 
 //            ListView:PORTRAIT
-          mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
+            mRecyclerView.addItemDecoration(new RecyclerViewDivider(mActivity, LinearLayoutManager.VERTICAL));
 
             //ListView:HORIZONTAL
-//            mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity,LinearLayoutManager.HORIZONTAL,false));
+//            mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.HORIZONTAL, false));
+//            int i = (int) getResources().getDimension(R.dimen.margin_10dp);
+//            Rect rect = new Rect(0, i, i, 0);
+//            int j = (int) getResources().getDimension(R.dimen.margin_15dp);
+//            Rect firstAndLastRect = new Rect(j, i, i, 0);
+//            mRecyclerView.addItemDecoration(new HorizontalSpacesDecoration(rect, firstAndLastRect));
         } else if (position == APPConstants.Type_Grid_Layout) {
             APPConstants.type = position;
             mLayoutManager = new GridLayoutManager(mActivity, APPConstants.Column_Nums);
@@ -113,13 +128,19 @@ public class DetailNormalFragment extends Fragment implements DetailNormalViewAd
             mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    if (position % 2 == 0) {
-                        return 1;
-                    } else {
-                        return 2;
-                    }
+                    return 1;
+//                    if (position % 2 == 0) {
+//                        return 1;
+//                    } else {
+//                        return 2;
+//                    }
                 }
             });
+
+            /**
+             * 该方法可为item添加装饰，如为每个item设置边距等
+             */
+            mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), (int) getResources().getDimension(R.dimen.margin_10dp), 0, 0));
             mRecyclerView.setLayoutManager(mLayoutManager);
 
 
@@ -137,6 +158,6 @@ public class DetailNormalFragment extends Fragment implements DetailNormalViewAd
 
     @Override
     public void onItemClick(View v, int position) {
-        ToastUtil.ShowBottomShort(mActivity, mData.get(position)+".");
+        ToastUtil.ShowBottomShort(mActivity, mData.get(position) + ".");
     }
 }

@@ -5,6 +5,7 @@
     <dimen name="toolbar_padding_top">15dp</dimen>
     <dimen name="cardview_margin">5dp</dimen>
     <dimen name="margin_10dp">10dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
     <dimen name="margin_50dp">50dp</dimen>
     <dimen name="margin_0.5dp">0.5dp</dimen>
     <dimen name="home_item_margin">8dp</dimen>
