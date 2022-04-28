@@ -119,6 +119,12 @@ public class ShareUtil {
 
     }
 
+    /**
+     * 分享时只显示指定app
+     * @param context
+     * @param contentText
+     * @return
+     */
     public static int shareSpecifiedApp(Context context, String contentText) {
         try {
             List<Intent> targetIntents = new ArrayList<>();
