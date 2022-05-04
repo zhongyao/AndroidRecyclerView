@@ -290,5 +290,28 @@
         android:gravity="center"
         android:text="系统分享" />
 
+    <!--
+    1、如果您在 XML 文件中设置自动调整大小，则不建议将值“wrap_content”用于 a 的 layout_widthorlayout_height属性 TextView。
+       它可能会产生意想不到的结果。【如不同list页面使用同一item布局时，动态刷新时可能会有大小跳跃问题】
+    2、autoSizeTextType 设置为uniform时，默认幅度是1px,会覆盖autoSizePresetSizes
+    3、autoSizeTextType 设置none时关闭自动调整大小功能，设置uniform时统一缩放水平轴和垂直轴。
+    4、autoSizePresetSizes：【api 26才支持】将 autoSizePresetSizes 属性设置为一组预设大小。
+       要将数组作为资源访问，请在res/values/arrays.xml 文件中定义数组。
+    -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAutoSize"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:autoSizeMaxTextSize="15dp"
+        android:autoSizeMinTextSize="6dp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/ll_selector"
+        android:gravity="center"
+        android:maxWidth="200dp"
+        android:maxLines="1"
+        android:textSize="15dp"
+        android:text="文本文字" />
+
 
 </com.hongri.recyclerview.widget.SettingLayout>

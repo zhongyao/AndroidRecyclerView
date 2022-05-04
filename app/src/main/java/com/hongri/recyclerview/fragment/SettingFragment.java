@@ -13,8 +13,10 @@ import android.os.Vibrator;
 import android.speech.RecognizerIntent;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextPaint;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -80,6 +82,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private TextView textW;
     private TextView tvToast;
     private TextView tvShare;
+    private AppCompatTextView tvAutoSize;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
     private CustomToast toast;
@@ -232,6 +235,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         textContent = view.findViewById(R.id.textContent);
         tvToast = view.findViewById(R.id.tvToast);
         tvShare = view.findViewById(R.id.tvShare);
+        tvAutoSize = view.findViewById(R.id.tvAutoSize);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -256,6 +260,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         textW.setOnClickListener(this);
         tvToast.setOnClickListener(this);
         tvShare.setOnClickListener(this);
+        tvAutoSize.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -442,6 +447,37 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
             case R.id.tvShare:
                 Intent intent = new Intent(getActivity(), ShareTestActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.tvAutoSize:
+                String textStr = "文本文字大小自适应哈哈哈呵呵呵嘿嘿嘿";
+                //1、获取文本属性值
+                float preTextSize = tvAutoSize.getTextSize();
+                int maxTextSize = tvAutoSize.getAutoSizeMaxTextSize();
+                int minTextSize = tvAutoSize.getAutoSizeMinTextSize();
+                int autoStep = tvAutoSize.getAutoSizeStepGranularity();
+                int textType = tvAutoSize.getAutoSizeTextType();
+                int width = tvAutoSize.getWidth();
+                int height = tvAutoSize.getHeight();
+                int maxWidth = tvAutoSize.getMaxWidth();
+
+                Log.d(TAG, "preTextSize:" + preTextSize);
+                Log.d(TAG, "maxTextSize:" + maxTextSize);
+                Log.d(TAG, "minTextSize:" + minTextSize);
+                Log.d(TAG, "autoStep:" + autoStep);
+                Log.d(TAG, "textType:" + textType);
+                Log.d(TAG, "width:" + width + " height:" + height + " maxWidth:" + maxWidth);
+                //2、计算新文本需要占用的宽度
+
+                TextPaint textPaint = tvAutoSize.getPaint();
+                float textTotalPaintWidth = textPaint.measureText(textStr);
+                Log.d(TAG, "textTotalPaintWidth: " + textTotalPaintWidth);
+                if (textTotalPaintWidth >= maxWidth) {
+                    tvAutoSize.setWidth(maxWidth);
+                } else {
+                    tvAutoSize.setWidth((int) textTotalPaintWidth);
+                }
+                tvAutoSize.setText(textStr);
                 break;
 
             default:
