@@ -310,8 +310,18 @@
         android:gravity="center"
         android:maxWidth="200dp"
         android:maxLines="1"
-        android:textSize="15dp"
-        android:text="文本文字" />
+        android:text="文本文字"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tvAutoSize2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ellipsize="end"
+        android:background="@drawable/ll_selector"
+        android:gravity="center"
+        android:text="文字大小哈哈哈哈哈哈" />
 
 
 </com.hongri.recyclerview.widget.SettingLayout>

@@ -18,10 +18,12 @@ import androidx.fragment.app.Fragment;
 
 import android.text.TextPaint;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -40,6 +42,7 @@ import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.threadpool.ThreadPoolTester;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.CustomToast;
+import com.hongri.recyclerview.utils.DisplayUtil;
 import com.hongri.recyclerview.utils.SoftKeyboardUtil;
 import com.hongri.recyclerview.utils.TimeCountDown;
 import com.hongri.recyclerview.utils.ToastUtil;
@@ -83,6 +86,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private TextView tvToast;
     private TextView tvShare;
     private AppCompatTextView tvAutoSize;
+    private TextView tvAutoSize2;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
     private CustomToast toast;
@@ -236,6 +240,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvToast = view.findViewById(R.id.tvToast);
         tvShare = view.findViewById(R.id.tvShare);
         tvAutoSize = view.findViewById(R.id.tvAutoSize);
+        tvAutoSize2 = view.findViewById(R.id.tvAutoSize2);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -261,6 +266,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvToast.setOnClickListener(this);
         tvShare.setOnClickListener(this);
         tvAutoSize.setOnClickListener(this);
+        tvAutoSize2.setOnClickListener(this);
 
         editText.setText("00");
 
@@ -478,6 +484,43 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                     tvAutoSize.setWidth((int) textTotalPaintWidth);
                 }
                 tvAutoSize.setText(textStr);
+                break;
+
+            case R.id.tvAutoSize2:
+                tvAutoSize2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        int lineCount = tvAutoSize2.getLineCount();
+                        int textSizeInDip = DisplayUtil.px2dip(requireContext(), tvAutoSize2.getTextSize());
+
+                        //当行数大于1行 & 且字体大于10dp时，缩小字体。直至行数小于1或字体大小小于等于10dp时终止。此后设置lineCount为1
+//                        while (lineCount > 1 && textSizeInDip > 10) {
+//                            tvAutoSize2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, --textSizeInDip);
+////                            lineCount = tvAutoSize2.getLineCount();
+//                        }
+//                        int maxWidth = tvAutoSize2.getMaxWidth();
+                        int maxWidth = DisplayUtil.dip2px(requireContext(), 100);
+                        int width = tvAutoSize2.getWidth();
+
+                        Log.d(TAG, "maxWidth:" + maxWidth + " width:" + width);
+
+                        while (width > maxWidth && textSizeInDip > 6) {
+                            tvAutoSize2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, --textSizeInDip);
+                            width = tvAutoSize2.getWidth();
+                            Log.d(TAG, "## -> maxWidth:" + maxWidth + " width:" + width + " textSizeInDip:" + textSizeInDip);
+                        }
+
+
+//                        if (lineCount > 1) {
+//                            tvAutoSize2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+//                        } else {
+//                            tvAutoSize2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+//                        }
+                        tvAutoSize2.setMaxLines(1);
+                        tvAutoSize2.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    }
+                });
+                tvAutoSize2.setText("红红火火恍恍惚惚或或或或或或或或或或或或或或或呵呵呵呵");
                 break;
 
             default:
