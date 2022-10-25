@@ -1,327 +1,343 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.hongri.recyclerview.widget.SettingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/ll_clearCache"
+    <com.hongri.recyclerview.widget.SettingLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ll_selector"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/margin_10dp"
-        android:paddingBottom="@dimen/margin_10dp"
-        android:visibility="gone">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_clearCache"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ll_selector"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/margin_10dp"
+            android:paddingBottom="@dimen/margin_10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/clearCache" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_31c27c"></TextView>
+
+        <LinearLayout
+            android:id="@+id/ll_convert"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/clearCache" />
-    </LinearLayout>
+            android:background="@drawable/ll_selector"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/margin_10dp"
+            android:paddingBottom="@dimen/margin_10dp"
+            android:visibility="gone">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/color_31c27c"></TextView>
-
-    <LinearLayout
-        android:id="@+id/ll_convert"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ll_selector"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/margin_10dp"
-        android:paddingBottom="@dimen/margin_10dp"
-        android:visibility="gone">
+            <TextView
+                android:id="@+id/tv_convert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/tv_convert" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_convert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/tv_convert" />
-    </LinearLayout>
+            android:layout_width="355dp"
+            android:layout_height="1dp"
+            android:background="@color/color_31c27c" />
 
-    <TextView
-        android:layout_width="355dp"
-        android:layout_height="1dp"
-        android:background="@color/color_31c27c" />
-
-    <!--震动-->
-    <Button
-        android:id="@+id/vibrate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:background="@drawable/ll_selector"
-        android:text="@string/vibrator"
-        android:visibility="gone" />
-
-    <!--语音识别-->
-    <Button
-        android:id="@+id/speechRecognizer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:background="@drawable/ll_selector"
-        android:text="@string/speechRecognizer" />
-    <!--EditText 复制 剪切 粘贴-->
-    <com.hongri.recyclerview.widget.MyEditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:background="@drawable/ll_selector"
-        android:hint="@string/edit_text_string" />
-
-    <Button
-        android:id="@+id/btn_exec"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:background="@drawable/ll_selector"
-        android:text="@string/exec_app" />
-
-    <Button
-        android:id="@+id/btn_open_new_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:background="@drawable/ll_selector"
-        android:text="@string/open_new_fragment" />
-
-    <!--使用wrap_content在不同的drawable文件夹下加载相同图片，差异会很大，故建议使用一个固定的dp值比较好-->
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/welcome_android"
-        android:visibility="gone" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/editTextKeyboard"
-            android:layout_width="wrap_content"
+        <!--震动-->
+        <Button
+            android:id="@+id/vibrate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_weight="2"
             android:background="@drawable/ll_selector"
-            android:hint="@string/edit_text_keyboard"
-            android:singleLine="false" />
-        <!--测试软件盘的按钮-->
+            android:text="@string/vibrator"
+            android:visibility="gone" />
+
+        <!--语音识别-->
         <Button
-            android:id="@+id/testKB"
+            android:id="@+id/speechRecognizer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/ll_selector"
+            android:text="@string/speechRecognizer" />
+        <!--EditText 复制 剪切 粘贴-->
+        <com.hongri.recyclerview.widget.MyEditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/ll_selector"
+            android:hint="@string/edit_text_string" />
+
+        <Button
+            android:id="@+id/btn_exec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/ll_selector"
+            android:text="@string/exec_app" />
+
+        <Button
+            android:id="@+id/btn_open_new_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/ll_selector"
+            android:text="@string/open_new_fragment" />
+
+        <!--使用wrap_content在不同的drawable文件夹下加载相同图片，差异会很大，故建议使用一个固定的dp值比较好-->
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/ll_selector"
-            android:text="测试" />
-    </LinearLayout>
+            android:src="@drawable/welcome_android"
+            android:visibility="gone" />
 
-    <!--各厂商角标测试-->
-    <Button
-        android:id="@+id/badgeBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ll_selector"
-        android:text="Badge Test" />
-
-    <TextView
-        android:id="@+id/tv_font"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/ll_selector"
-        android:text="Good"
-        android:textFontWeight="700"
-        android:textSize="18dp"
-        android:textStyle="bold" />
-
-    <!--线程池测试-->
-    <Button
-        android:id="@+id/threadExecutorBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ll_selector"
-        android:text="ThreadPoolExecutor" />
-
-    <!--正则表达式：
-     参考：https://www.liaoxuefeng.com/wiki/1016959663602400/1017639890281664 -->
-    <Button
-        android:id="@+id/regexBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ll_selector"
-        android:text="regex[正则表达式]" />
-
-    <!--动画导致setVisibility/removeView失效问题解决方案:
-        1、在这两处操作之前 view.clearAnimation()即可
-
-        另外有一种情况setVisibility/removeView不会失效，
-        即如下的LinearLayout(父布局)height 是wrap_content。
-        -->
-    <LinearLayout
-        android:id="@+id/layoutAnim"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/green"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <Button
-            android:id="@+id/viewAnim"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/ll_selector"
-            android:text="动画导致setVisibility/removeView失效" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <!--Drawable的缓存机制（包含mutate）：
-    参考：https://www.heqiangfly.com/2017/06/15/android-knowledge-point-drawable-cache/
-    -->
-    <LinearLayout
-        android:id="@+id/layoutDrawable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="40dp"
-        android:visibility="gone">
+            <EditText
+                android:id="@+id/editTextKeyboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="2"
+                android:background="@drawable/ll_selector"
+                android:hint="@string/edit_text_keyboard"
+                android:singleLine="false" />
+            <!--测试软件盘的按钮-->
+            <Button
+                android:id="@+id/testKB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/ll_selector"
+                android:text="测试" />
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/first"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:background="#1E90FF"
-            android:scaleType="fitXY" />
-
-        <ImageView
-            android:id="@+id/second"
-            android:layout_width="50dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="50dp"
-            android:background="#1E90FF"
-            android:scaleType="fitXY" />
-    </LinearLayout>
-
-    <!--多渠道打包测试-->
-    <Button
-        android:id="@+id/flavorProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ll_selector"
-        android:text="多渠道打包" />
-
-    <Button
-        android:id="@+id/exceptionBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ll_selector"
-        android:text="无法捕获的Exception(不包含Error)" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
+        <!--各厂商角标测试-->
         <Button
-            android:id="@+id/timer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/badgeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/ll_selector"
-            android:text="计时器" />
+            android:text="Badge Test" />
 
         <TextView
-            android:id="@+id/tvTimer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/white"
+            android:id="@+id/tv_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ll_selector"
+            android:text="Good"
+            android:textFontWeight="700"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <!--线程池测试-->
+        <Button
+            android:id="@+id/threadExecutorBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ll_selector"
+            android:text="ThreadPoolExecutor" />
+
+        <!--正则表达式：
+         参考：https://www.liaoxuefeng.com/wiki/1016959663602400/1017639890281664 -->
+        <Button
+            android:id="@+id/regexBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ll_selector"
+            android:text="regex[正则表达式]" />
+
+        <!--动画导致setVisibility/removeView失效问题解决方案:
+            1、在这两处操作之前 view.clearAnimation()即可
+
+            另外有一种情况setVisibility/removeView不会失效，
+            即如下的LinearLayout(父布局)height 是wrap_content。
+            -->
+        <LinearLayout
+            android:id="@+id/layoutAnim"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/green"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/viewAnim"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ll_selector"
+                android:text="动画导致setVisibility/removeView失效" />
+        </LinearLayout>
+
+        <!--Drawable的缓存机制（包含mutate）：
+        参考：https://www.heqiangfly.com/2017/06/15/android-knowledge-point-drawable-cache/
+        -->
+        <LinearLayout
+            android:id="@+id/layoutDrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="40dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/first"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="#1E90FF"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/second"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="50dp"
+                android:background="#1E90FF"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+
+        <!--多渠道打包测试-->
+        <Button
+            android:id="@+id/flavorProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ll_selector"
+            android:text="多渠道打包" />
+
+        <Button
+            android:id="@+id/exceptionBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ll_selector"
+            android:text="无法捕获的Exception(不包含Error)" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/timer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ll_selector"
+                android:text="计时器" />
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ll_selector"
+            android:text="不渲染情况下，计算TextView高度" />
+
+        <TextView
+            android:id="@+id/textW"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/ll_selector"
             android:gravity="center"
-            android:text="" />
+            android:text="不渲染情况下，计算文本宽度" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/textContent"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ll_selector"
+            android:gravity="center"
+            android:text="哈哈" />
 
-    <TextView
-        android:id="@+id/textH"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ll_selector"
-        android:text="不渲染情况下，计算TextView高度" />
+        <TextView
+            android:id="@+id/tvToast"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/ll_selector"
+            android:gravity="center"
+            android:text="自定义Toast[布局 + 时长]" />
 
-    <TextView
-        android:id="@+id/textW"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/ll_selector"
-        android:gravity="center"
-        android:text="不渲染情况下，计算文本宽度" />
+        <TextView
+            android:id="@+id/tvShare"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/ll_selector"
+            android:gravity="center"
+            android:text="系统分享" />
 
-    <TextView
-        android:id="@+id/textContent"
-        android:layout_width="70dp"
-        android:layout_height="30dp"
-        android:background="@drawable/ll_selector"
-        android:gravity="center"
-        android:text="哈哈" />
+        <!--
+        1、如果您在 XML 文件中设置自动调整大小，则不建议将值“wrap_content”用于 a 的 layout_widthorlayout_height属性 TextView。
+           它可能会产生意想不到的结果。【如不同list页面使用同一item布局时，动态刷新时可能会有大小跳跃问题】
+        2、autoSizeTextType 设置为uniform时，默认幅度是1px,会覆盖autoSizePresetSizes
+        3、autoSizeTextType 设置none时关闭自动调整大小功能，设置uniform时统一缩放水平轴和垂直轴。
+        4、autoSizePresetSizes：【api 26才支持】将 autoSizePresetSizes 属性设置为一组预设大小。
+           要将数组作为资源访问，请在res/values/arrays.xml 文件中定义数组。
+        -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAutoSize"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:autoSizeMaxTextSize="15dp"
+            android:autoSizeMinTextSize="6dp"
+            android:autoSizeTextType="uniform"
+            android:background="@drawable/ll_selector"
+            android:gravity="center"
+            android:maxWidth="200dp"
+            android:maxLines="1"
+            android:text="文本文字"
+            android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/tvToast"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/ll_selector"
-        android:gravity="center"
-        android:text="自定义Toast[布局 + 时长]" />
+        <TextView
+            android:id="@+id/tvAutoSize2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ll_selector"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="文字大小哈哈哈哈哈哈" />
 
-    <TextView
-        android:id="@+id/tvShare"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/ll_selector"
-        android:gravity="center"
-        android:text="系统分享" />
-
-    <!--
-    1、如果您在 XML 文件中设置自动调整大小，则不建议将值“wrap_content”用于 a 的 layout_widthorlayout_height属性 TextView。
-       它可能会产生意想不到的结果。【如不同list页面使用同一item布局时，动态刷新时可能会有大小跳跃问题】
-    2、autoSizeTextType 设置为uniform时，默认幅度是1px,会覆盖autoSizePresetSizes
-    3、autoSizeTextType 设置none时关闭自动调整大小功能，设置uniform时统一缩放水平轴和垂直轴。
-    4、autoSizePresetSizes：【api 26才支持】将 autoSizePresetSizes 属性设置为一组预设大小。
-       要将数组作为资源访问，请在res/values/arrays.xml 文件中定义数组。
-    -->
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAutoSize"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_gravity="center_horizontal"
-        android:autoSizeMaxTextSize="15dp"
-        android:autoSizeMinTextSize="6dp"
-        android:autoSizeTextType="uniform"
-        android:background="@drawable/ll_selector"
-        android:gravity="center"
-        android:maxWidth="200dp"
-        android:maxLines="1"
-        android:text="文本文字"
-        android:textSize="15dp" />
-
-    <TextView
-        android:id="@+id/tvAutoSize2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:ellipsize="end"
-        android:background="@drawable/ll_selector"
-        android:gravity="center"
-        android:text="文字大小哈哈哈哈哈哈" />
+        <TextView
+            android:id="@+id/tvSpanColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ll_selector"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="{}内的文字色值区分" />
 
 
-</com.hongri.recyclerview.widget.SettingLayout>
+    </com.hongri.recyclerview.widget.SettingLayout>
+
+</androidx.core.widget.NestedScrollView>

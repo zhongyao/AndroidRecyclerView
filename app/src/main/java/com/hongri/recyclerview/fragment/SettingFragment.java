@@ -87,6 +87,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private TextView tvShare;
     private AppCompatTextView tvAutoSize;
     private TextView tvAutoSize2;
+    private TextView tvSpanColor;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
     private CustomToast toast;
@@ -241,6 +242,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvShare = view.findViewById(R.id.tvShare);
         tvAutoSize = view.findViewById(R.id.tvAutoSize);
         tvAutoSize2 = view.findViewById(R.id.tvAutoSize2);
+        tvSpanColor = view.findViewById(R.id.tvSpanColor);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -267,6 +269,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvShare.setOnClickListener(this);
         tvAutoSize.setOnClickListener(this);
         tvAutoSize2.setOnClickListener(this);
+
+        String text = "注册领取{20CNY}奖励";
+        tvSpanColor.setText(DisplayUtil.getFinalTextSpan(getContext(), text, R.color.cardview_dark_background, R.color.red, false));
 
         editText.setText("00");
 
