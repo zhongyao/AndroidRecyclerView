@@ -271,7 +271,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvAutoSize2.setOnClickListener(this);
 
         String text = "注册领取{20CNY}奖励";
-        tvSpanColor.setText(DisplayUtil.getFinalTextSpan(getContext(), text, R.color.cardview_dark_background, R.color.red, false));
+        tvSpanColor.setText(DisplayUtil.getFinalTextSpan(getContext(), text, R.color.cardview_dark_background, R.color.red, true));
 
         editText.setText("00");
 
