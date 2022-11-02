@@ -41,6 +41,7 @@ import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.threadpool.ThreadPoolTester;
 import com.hongri.recyclerview.utils.APPUtils;
+import com.hongri.recyclerview.utils.CommonNumberUtil;
 import com.hongri.recyclerview.utils.CustomToast;
 import com.hongri.recyclerview.utils.DisplayUtil;
 import com.hongri.recyclerview.utils.SoftKeyboardUtil;
@@ -50,6 +51,7 @@ import com.hongri.recyclerview.widget.AlxTextView;
 import com.hongri.recyclerview.widget.MyEditText;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -88,6 +90,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private AppCompatTextView tvAutoSize;
     private TextView tvAutoSize2;
     private TextView tvSpanColor;
+    private TextView tvNumberDispose;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
     private CustomToast toast;
@@ -243,6 +246,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvAutoSize = view.findViewById(R.id.tvAutoSize);
         tvAutoSize2 = view.findViewById(R.id.tvAutoSize2);
         tvSpanColor = view.findViewById(R.id.tvSpanColor);
+        tvNumberDispose = view.findViewById(R.id.tvNumberDispose);
 
 
         ll_clearCache.setOnClickListener(this);
@@ -274,6 +278,12 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvSpanColor.setText(DisplayUtil.getFinalTextSpan(getContext(), text, R.color.cardview_dark_background, R.color.red, true));
 
         editText.setText("00");
+
+        String num = "3748.59482";
+        //精度
+        int precision = 4;
+        String finalNum = CommonNumberUtil.getSafeHandleDec(CommonNumberUtil.formatNum(num, precision), precision);
+        tvNumberDispose.setText("数字通用处理:" + finalNum);
 
         return view;
     }

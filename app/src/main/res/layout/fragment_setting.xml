@@ -337,6 +337,16 @@
             android:gravity="center"
             android:text="{}内的文字色值区分" />
 
+        <TextView
+            android:id="@+id/tvNumberDispose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ll_selector"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="数字通用处理" />
+
 
     </com.hongri.recyclerview.widget.SettingLayout>
 
