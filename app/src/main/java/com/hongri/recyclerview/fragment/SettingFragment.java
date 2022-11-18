@@ -9,11 +9,13 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Vibrator;
 import android.speech.RecognizerIntent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextPaint;
@@ -44,6 +46,7 @@ import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.CommonNumberUtil;
 import com.hongri.recyclerview.utils.CustomToast;
 import com.hongri.recyclerview.utils.DisplayUtil;
+import com.hongri.recyclerview.utils.PreloadImageUtil;
 import com.hongri.recyclerview.utils.SoftKeyboardUtil;
 import com.hongri.recyclerview.utils.TimeCountDown;
 import com.hongri.recyclerview.utils.ToastUtil;
@@ -67,6 +70,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private Vibrator vibrator;
     private Button speechRecognizer;
     private MyEditText editText;
+    private NestedScrollView nestedScrollView;
     private LinearLayout ll_clearCache, ll_convert;
     private Button vibrate, execApp;
     private Button btn_open_new_fragment;
@@ -91,9 +95,12 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private TextView tvAutoSize2;
     private TextView tvSpanColor;
     private TextView tvNumberDispose;
+    private ImageView preloadImageView;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
     private CustomToast toast;
+    //是否从后台回来
+    private boolean comeFromBackground;
 
     @Override
     public void onAttach(Context context) {
@@ -175,18 +182,28 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume");
+        //滑到底部
+        nestedScrollView.fullScroll(View.FOCUS_DOWN);
+
+        if (comeFromBackground) {
+            PreloadImageUtil.preloadImageAndShow(getActivity(), preloadImageView, PreloadImageUtil.IMAGE_URL);
+            comeFromBackground = false;
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
         Log.d(TAG, "onPause");
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
         Log.d(TAG, "onStop");
+        comeFromBackground = true;
+        PreloadImageUtil.preloadImage(getActivity(), PreloadImageUtil.IMAGE_URL);
     }
 
     @Override
@@ -209,6 +226,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     }
 
     private View initView(View view) {
+        nestedScrollView = view.findViewById(R.id.nested_scroll_view);
         ll_clearCache = (LinearLayout) view.findViewById(R.id.ll_clearCache);
         ll_convert = (LinearLayout) view.findViewById(R.id.ll_convert);
         vibrate = (Button) view.findViewById(R.id.vibrate);
@@ -247,6 +265,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvAutoSize2 = view.findViewById(R.id.tvAutoSize2);
         tvSpanColor = view.findViewById(R.id.tvSpanColor);
         tvNumberDispose = view.findViewById(R.id.tvNumberDispose);
+        preloadImageView = view.findViewById(R.id.pre_img);
 
 
         ll_clearCache.setOnClickListener(this);

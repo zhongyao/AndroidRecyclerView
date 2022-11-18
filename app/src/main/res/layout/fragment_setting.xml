@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nested_scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="afterDescendants">
 
     <com.hongri.recyclerview.widget.SettingLayout
         android:layout_width="match_parent"
@@ -346,6 +351,13 @@
             android:ellipsize="end"
             android:gravity="center"
             android:text="数字通用处理" />
+
+        <!--图片Glide预加载-->
+        <ImageView
+            android:id="@+id/pre_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"/>
 
 
     </com.hongri.recyclerview.widget.SettingLayout>
