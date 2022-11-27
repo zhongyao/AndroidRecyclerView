@@ -1,11 +1,13 @@
 package com.hongri.recyclerview.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +35,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hongri.recyclerview.R;
@@ -46,6 +49,7 @@ import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.CommonNumberUtil;
 import com.hongri.recyclerview.utils.CustomToast;
 import com.hongri.recyclerview.utils.DisplayUtil;
+import com.hongri.recyclerview.utils.GsonUtil;
 import com.hongri.recyclerview.utils.PreloadImageUtil;
 import com.hongri.recyclerview.utils.SoftKeyboardUtil;
 import com.hongri.recyclerview.utils.TimeCountDown;
@@ -55,6 +59,7 @@ import com.hongri.recyclerview.widget.MyEditText;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
@@ -96,6 +101,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private TextView tvSpanColor;
     private TextView tvNumberDispose;
     private ImageView preloadImageView;
+    private TextView tvGson;
+    private TextView testBgColor;
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
     private String content = "关关雎鸠，在河之洲，窈窕淑女，君子好逑";
     private CustomToast toast;
@@ -266,7 +273,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvSpanColor = view.findViewById(R.id.tvSpanColor);
         tvNumberDispose = view.findViewById(R.id.tvNumberDispose);
         preloadImageView = view.findViewById(R.id.pre_img);
-
+        tvGson = view.findViewById(R.id.tvGson);
+        testBgColor = view.findViewById(R.id.testBgColor);
 
         ll_clearCache.setOnClickListener(this);
         ll_convert.setOnClickListener(this);
@@ -292,6 +300,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvShare.setOnClickListener(this);
         tvAutoSize.setOnClickListener(this);
         tvAutoSize2.setOnClickListener(this);
+        tvGson.setOnClickListener(this);
+        testBgColor.setOnClickListener(this);
 
         String text = "注册领取{20CNY}奖励";
         tvSpanColor.setText(DisplayUtil.getFinalTextSpan(getContext(), text, R.color.cardview_dark_background, R.color.red, true));
@@ -307,6 +317,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         return view;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -555,6 +566,23 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
                     }
                 });
                 tvAutoSize2.setText("红红火火恍恍惚惚或或或或或或或或或或或或或或或呵呵呵呵");
+                break;
+
+            case R.id.tvGson:
+                HashSet<String> hashSet = new HashSet<>();
+                hashSet.add("btc");
+                hashSet.add("eth");
+                GsonUtil.hashSetToJson(hashSet);
+                break;
+
+            case R.id.testBgColor:
+                //慎用，无法正常显示色值
+//                testBgColor.setBackgroundColor(R.color.red);
+                //可用
+//                testBgColor.setBackgroundColor(getResources().getColor(R.color.red));
+                //可用
+                testBgColor.setBackgroundColor(Color.parseColor("#FFCC0000"));
+//
                 break;
 
             default:

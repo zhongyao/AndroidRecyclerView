@@ -179,6 +179,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     compileOnly 'com.mcxiaoke.volley:library:1.0.+'
     implementation files('libs/rebound-0.3.8.jar')
+    implementation 'com.google.code.gson:gson:2.8.9'
 //    implementation 'com.meituan.android.walle:library:1.1.6'
 }
 

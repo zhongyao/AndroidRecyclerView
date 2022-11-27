@@ -3,10 +3,10 @@
     android:id="@+id/nested_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="afterDescendants"
     android:fillViewport="true"
     android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:descendantFocusability="afterDescendants">
+    android:focusableInTouchMode="true">
 
     <com.hongri.recyclerview.widget.SettingLayout
         android:layout_width="match_parent"
@@ -357,8 +357,27 @@
             android:id="@+id/pre_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal" />
 
+        <TextView
+            android:id="@+id/tvGson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ll_selector"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="Gson应用" />
+
+        <TextView
+            android:id="@+id/testBgColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#00ff00"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="testBgColor" />
 
     </com.hongri.recyclerview.widget.SettingLayout>
 
