@@ -9,6 +9,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -38,6 +39,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.hongri.recyclerview.R;
 import com.hongri.recyclerview.activity.MainActivity;
 import com.hongri.recyclerview.activity.ShareTestActivity;
@@ -57,6 +61,7 @@ import com.hongri.recyclerview.utils.ToastUtil;
 import com.hongri.recyclerview.widget.AlxTextView;
 import com.hongri.recyclerview.widget.MyEditText;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -76,6 +81,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private Button speechRecognizer;
     private MyEditText editText;
     private NestedScrollView nestedScrollView;
+    private TextView tv_common_corner;
+    private ImageView iv_corner;
     private LinearLayout ll_clearCache, ll_convert;
     private Button vibrate, execApp;
     private Button btn_open_new_fragment;
@@ -234,6 +241,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
 
     private View initView(View view) {
         nestedScrollView = view.findViewById(R.id.nested_scroll_view);
+        iv_corner = view.findViewById(R.id.iv_corner);
+        tv_common_corner = view.findViewById(R.id.tv_common_corner);
         ll_clearCache = (LinearLayout) view.findViewById(R.id.ll_clearCache);
         ll_convert = (LinearLayout) view.findViewById(R.id.ll_convert);
         vibrate = (Button) view.findViewById(R.id.vibrate);
@@ -276,6 +285,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvGson = view.findViewById(R.id.tvGson);
         testBgColor = view.findViewById(R.id.testBgColor);
 
+        iv_corner.setOnClickListener(this);
+        tv_common_corner.setOnClickListener(this);
         ll_clearCache.setOnClickListener(this);
         ll_convert.setOnClickListener(this);
         vibrate.setOnClickListener(this);
@@ -321,6 +332,15 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.iv_corner:
+                Glide.with(this).asBitmap().load(PreloadImageUtil.IMAGE_URL2).apply(RequestOptions.bitmapTransform(new RoundedCorners(DisplayUtil.dip2px(getContext(),80)))).into(iv_corner);
+                break;
+
+            case R.id.tv_common_corner:
+//                tv_common_corner.setBackgroundColor(getResources().getColor(R.color.blue));
+                GradientDrawable commonCornerBg = (GradientDrawable) tv_common_corner.getBackground();
+                commonCornerBg.setColor(getResources().getColor(R.color.blue));
+                break;
             /**
              * 缓存清理
              */

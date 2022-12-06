@@ -24,7 +24,7 @@ public class PreloadImageUtil {
     private static final String TAG = "PreloadImageUtil";
 
     public static final String IMAGE_URL = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp15.qhimg.com%2Fbdr%2F__%2Fd%2F_open360%2Fguniang125%2F64.jpg&refer=http%3A%2F%2Fp15.qhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671275184&t=cbed7145144c73b912428fe66031fdf0";
-
+    public static final String IMAGE_URL2 = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-11-20%2F5bf3ab9cd6653.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672402100&t=e48cbae2f346b760be39944027dffa09";
     /**
      * 只预加载图片
      * @param context
