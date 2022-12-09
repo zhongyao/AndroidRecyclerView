@@ -50,6 +50,7 @@ import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.threadpool.ThreadPoolTester;
 import com.hongri.recyclerview.utils.APPUtils;
+import com.hongri.recyclerview.utils.CollectionUtil;
 import com.hongri.recyclerview.utils.CommonNumberUtil;
 import com.hongri.recyclerview.utils.CustomToast;
 import com.hongri.recyclerview.utils.DisplayUtil;
@@ -64,6 +65,7 @@ import com.hongri.recyclerview.widget.MyEditText;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -143,6 +145,11 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
         initVibrate();
+
+//        CollectionUtil.sortList();
+//        CollectionUtil.sortList2(true);
+        CollectionUtil.sortBeanList(true);
+//        CollectionUtil.sortBeanList2(true);
     }
 
     private void initRecognizer() {
