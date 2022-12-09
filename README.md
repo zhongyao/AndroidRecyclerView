@@ -309,5 +309,5 @@
 ### 25、设置{}内字体高亮【getFinalTextSpan方法】
 #### 可控制{}内字体高亮及其内外部字体大小
 
-
+### List/HashMap相关排序 可参考CollectionUtil类：
 
