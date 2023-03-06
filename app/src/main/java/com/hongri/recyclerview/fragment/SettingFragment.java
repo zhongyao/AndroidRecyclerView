@@ -48,6 +48,7 @@ import com.hongri.recyclerview.activity.ShareTestActivity;
 import com.hongri.recyclerview.badge.BadgeClient;
 import com.hongri.recyclerview.cache.CacheClearManager;
 import com.hongri.recyclerview.cache.ImageWorker;
+import com.hongri.recyclerview.helper.CountDownLatchHelper;
 import com.hongri.recyclerview.threadpool.ThreadPoolTester;
 import com.hongri.recyclerview.utils.APPUtils;
 import com.hongri.recyclerview.utils.CollectionUtil;
@@ -80,6 +81,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private static boolean hasClicked = false;
     private Activity mActivity;
     private Vibrator vibrator;
+    private TextView tvCountDownLatch;
     private Button speechRecognizer;
     private MyEditText editText;
     private NestedScrollView nestedScrollView;
@@ -248,6 +250,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
 
     private View initView(View view) {
         nestedScrollView = view.findViewById(R.id.nested_scroll_view);
+        tvCountDownLatch = view.findViewById(R.id.tv_count_down_latch);
         iv_corner = view.findViewById(R.id.iv_corner);
         tv_common_corner = view.findViewById(R.id.tv_common_corner);
         ll_clearCache = (LinearLayout) view.findViewById(R.id.ll_clearCache);
@@ -292,6 +295,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         tvGson = view.findViewById(R.id.tvGson);
         testBgColor = view.findViewById(R.id.testBgColor);
 
+        tvCountDownLatch.setOnClickListener(this);
         iv_corner.setOnClickListener(this);
         tv_common_corner.setOnClickListener(this);
         ll_clearCache.setOnClickListener(this);
@@ -339,6 +343,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_count_down_latch:
+                CountDownLatchHelper.getInstance().test();
+                break;
             case R.id.iv_corner:
                 Glide.with(this).asBitmap().load(PreloadImageUtil.IMAGE_URL2).apply(RequestOptions.bitmapTransform(new RoundedCorners(DisplayUtil.dip2px(getContext(),80)))).into(iv_corner);
                 break;
