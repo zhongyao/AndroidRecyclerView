@@ -24,6 +24,12 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         Logger.d("WelcomeActivity--onCreate()---> isTaskRoot:" + this.isTaskRoot());
 
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         if (!this.isTaskRoot()) {
             Intent intent = getIntent();
             if (intent != null) {
