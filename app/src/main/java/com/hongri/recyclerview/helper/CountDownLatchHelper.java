@@ -2,19 +2,19 @@ package com.hongri.recyclerview.helper;
 
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author：zhongyao
  * @date：2023/3/6
  * @description： 参考:https://www.jb51.cc/android/1073784.html
- *
+ * <p>
  * CountDownLatch可以看作一个计数器，只不过该计数器是原子操作，
  * 即同时只能有一个线程去操作这个计数器，也就是同时只能有一个线程去减这个计数器里面的值。
- *
+ * <p>
  * 应用场景：
  * 针对有一个任务想要往下执行，但必须要等到其他任务执行完毕后才可以的场景，我们可以调用其await()方法，
  * 待CountDownLatch对象的计数值减到0时，便会往下继续执行。
- *
  */
 public class CountDownLatchHelper {
 
@@ -51,6 +51,9 @@ public class CountDownLatchHelper {
 
         try {
             countDownLatch.await();
+
+            //如果10s还没执行完，则不管CountDownLatch对象的计数值是否减到0，均会往下继续执行
+//            boolean isZero = countDownLatch.await(10 * 1000, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
