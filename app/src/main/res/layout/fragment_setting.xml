@@ -16,6 +16,15 @@
 
         <!--2023-3-6 新加的TV 移到上面，方便查看-->
         <TextView
+            android:id="@+id/tv_array"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/margin_10dp"
+            android:background="@drawable/ll_selector"
+            android:text="SparseArray/ArrayMap"/>
+        <TextView
             android:id="@+id/tv_count_down_latch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

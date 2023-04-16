@@ -51,6 +51,7 @@ import com.hongri.recyclerview.cache.ImageWorker;
 import com.hongri.recyclerview.helper.CountDownLatchHelper;
 import com.hongri.recyclerview.threadpool.ThreadPoolTester;
 import com.hongri.recyclerview.utils.APPUtils;
+import com.hongri.recyclerview.utils.ArrayUtil;
 import com.hongri.recyclerview.utils.CollectionUtil;
 import com.hongri.recyclerview.utils.CommonNumberUtil;
 import com.hongri.recyclerview.utils.CustomToast;
@@ -81,6 +82,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private static boolean hasClicked = false;
     private Activity mActivity;
     private Vibrator vibrator;
+    private TextView tvArray;
     private TextView tvCountDownLatch;
     private Button speechRecognizer;
     private MyEditText editText;
@@ -251,6 +253,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     private View initView(View view) {
         nestedScrollView = view.findViewById(R.id.nested_scroll_view);
         tvCountDownLatch = view.findViewById(R.id.tv_count_down_latch);
+        tvArray = view.findViewById(R.id.tv_array);
         iv_corner = view.findViewById(R.id.iv_corner);
         tv_common_corner = view.findViewById(R.id.tv_common_corner);
         ll_clearCache = (LinearLayout) view.findViewById(R.id.ll_clearCache);
@@ -296,6 +299,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
         testBgColor = view.findViewById(R.id.testBgColor);
 
         tvCountDownLatch.setOnClickListener(this);
+        tvArray.setOnClickListener(this);
         iv_corner.setOnClickListener(this);
         tv_common_corner.setOnClickListener(this);
         ll_clearCache.setOnClickListener(this);
@@ -343,6 +347,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener, T
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_array:
+                ArrayUtil.initSparseArray();
+                ArrayUtil.initArrayMap();
+                break;
             case R.id.tv_count_down_latch:
                 CountDownLatchHelper.getInstance().test();
                 break;
